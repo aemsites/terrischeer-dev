@@ -1,2 +1,10 @@
 mountpoints:
-  /: https://drive.google.com/drive/u/0/folders/1MGzOt7ubUh3gu7zhZIPb7R7dyRzG371j
+  /:
+    url: "author-p139617-e1446464.adobeaemcloud.com//bin/franklin.delivery/aemsites/terrischeer-dev/main"
+    type: "markup"
+    suffix: ".html"
+
+folders:
+  /how-to-claim/: /how-to-claim
+  /privacy/: /privacy
+  

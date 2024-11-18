@@ -1,0 +1,92 @@
+{
+  "options": [
+    {
+      "name": "Arrow circle",
+      "value": ":arrow-circle-teal:"
+    },
+    {
+      "name": "Beach ball",
+      "value": ":beach-ball-teal:"
+    },
+    {
+      "name": "Building",
+      "value": ":building-teal:"
+    },
+    {
+      "name": "Check",
+      "value": ":check-teal:"
+    },
+    {
+      "name": "Chevron down",
+      "value": ":chevron-down-teal:"
+    },
+    {
+      "name": "Chevron right",
+      "value": ":chevron-right-teal:"
+    },
+    {
+      "name": "Contents",
+      "value": ":contents-teal:"
+    },
+    {
+      "name": "Exclamation",
+      "value": ":exclamation-teal:"
+    },
+    {
+      "name": "Fire",
+      "value": ":fire-teal:"
+    },
+    {
+      "name": "Friends",
+      "value": ":friends-teal:"
+    },
+    {
+      "name": "House fire",
+      "value": ":house-fire-teal:"
+    },
+    {
+      "name": "Legal",
+      "value": ":legal-teal:"
+    },
+    {
+      "name": "Menu search",
+      "value": ":menu-search-teal:"
+    },
+    {
+      "name": "PDF",
+      "value": ":pdf-file-teal:"
+    },
+    {
+      "name": "Pets",
+      "value": ":pets-teal:"
+    },
+    {
+      "name": "Plus",
+      "value": ":plus-teal:"
+    },
+    {
+      "name": "Question",
+      "value": ":question-teal:"
+    },
+    {
+      "name": "Relet",
+      "value": ":relet-teal:"
+    },
+    {
+      "name": "Rent",
+      "value": ":rent-teal:"
+    },
+    {
+      "name": "Repair",
+      "value": ":repair-teal:"
+    },
+    {
+      "name": "10 percent",
+      "value": ":10-percent-teal:"
+    },
+    {
+      "name": "Triangle right",
+      "value": ":triangle-right-teal:"
+    }
+  ]
+}

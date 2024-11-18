@@ -1,0 +1,21 @@
+{
+    "options": [
+      {
+        "name": "Default",
+        "value": ""
+      },
+      {
+        "name": "Check",
+        "value": ":icon-tick:"
+      },
+      {
+        "name": "Arrow",
+        "value": ":arrow-bullet-teal:"
+      },
+      {
+        "name": "Exclamation",
+        "value": ":icon-exclamation:"
+      }
+    ]
+  }
+  

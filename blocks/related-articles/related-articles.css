@@ -1,0 +1,33 @@
+.block.related-articles {
+  display: flex;
+  flex-direction: column;
+}
+
+.block.related-articles .related-article {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--teal-mid-light);
+  padding-bottom: 1rem;
+}
+
+.block.related-articles .article-title {
+  font-size: var(--heading-font-size-ml);
+  font-weight: var(--font-weight-normal);
+}
+
+.block.related-articles .article-descr {
+  line-height: 1.3em;
+  margin-top: 0;
+}
+
+.block.related-articles .related-articles-title h3 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.625rem;
+  color: var(--teal);
+  margin-top: unset;
+}
+
+.block.related-articles .article-title img {
+  width: 100%;
+}

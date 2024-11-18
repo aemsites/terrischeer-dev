@@ -1,33 +1,42 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 3rem;
 }
 
 .columns img {
   width: 100%;
 }
 
-.columns > div > div {
-  order: 1;
+.columns h1,
+.columns h2,
+.columns h3,
+.columns h4,
+.columns h5,
+.columns h6 {
+  color: var(--dark-color);
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns p {
+  font-size: 1rem;
 }
 
 .columns > div > .columns-img-col img {
   display: block;
 }
 
-@media (width >= 900px) {
+.columns h2 {
+  font-size: var(--heading-font-size-xxl);
+}
+
+/* View >= 991px */
+@media (width >= 48rem) {
   .columns > div {
-    align-items: center;
     flex-direction: unset;
-    gap: 24px;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  .columns h2 {
+    font-size: var(--heading-font-size-xl);
   }
 }

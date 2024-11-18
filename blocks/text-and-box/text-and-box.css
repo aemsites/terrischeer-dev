@@ -1,0 +1,58 @@
+.text-and-box {
+    margin-top: 0.9375rem;
+    padding: 1.25rem;
+    background: var(--teal-mid-light);
+    border-top-left-radius: 0.1875rem;
+    border-top-right-radius: 0.1875rem;
+    background-clip: padding-box;
+}
+
+.text-and-box h3 {
+    margin: 0 0 0.9375rem;
+    font-size: var(--heading-font-size-l);
+    line-height: 1.375rem;
+    font-weight: var(--font-weight-normal);
+}
+
+.text-and-box > div > h3 {
+    color: var(--teal);
+}
+
+.text-and-box p {
+    font-size: var(--heading-font-size-m);
+    line-height: var(1.125);
+    margin: 0 0 0.625rem;
+}
+
+.text-and-box .box-panel {
+    margin-top: 1.25rem;
+    padding: 0.9375rem;
+    background: var(--white);
+    border: 1px solid var(--teal);
+    border-radius: 0.1875rem;
+    color: var(--purple-light);
+}
+
+.text-and-box .box-panel .box-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.text-and-box .box-panel span.icon {
+    width: 4.375rem;
+    height: 4.375rem;
+    padding-right: 0.625rem;
+}
+
+.text-and-box .box-panel .button-container {
+    display: flex;
+}
+
+.text-and-box .box-panel a.button {
+    width: 8.625rem;
+    height: 2.8125rem;
+    text-align: center;
+    margin: 0.9375rem auto 0;
+}

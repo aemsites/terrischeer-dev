@@ -1,0 +1,202 @@
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal dialog::backdrop {
+  background-color: rgb(19 19 19 / 75%);
+}
+
+.modal dialog {
+  overscroll-behavior: none;
+  overflow-y: hidden;
+  position: relative;
+  width: calc(100vw - 3rem);
+  max-width: 34.375rem;
+  max-height: calc(100dvh - (2 * var(--header-height)));
+  padding: 0;
+  border: 0.0625rem solid var(--dark-color);
+}
+
+.modal dialog .modal-content {
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: none;
+  width: 100%;
+  max-height: calc(100dvh - (2 * var(--header-height)) - 3rem);
+  padding-top: 0;
+}
+
+@media (width >=56.25rem) {
+  .modal dialog {
+    width: calc(100vw - 4rem);
+  }
+
+  .modal dialog .modal-content {
+    max-height: calc(100dvh - (2 * var(--header-height)) - 4rem);
+  }
+}
+
+.modal .close-button[aria-label='Close'] {
+  background: unset;
+}
+
+.modal .close-button {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+  color: var(--white);
+  line-height: 0;
+}
+
+.modal .close-button .icon.icon-close {
+  content: '';
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal .close-button .icon.icon-close::before,
+.modal .close-button .icon.icon-close::after {
+  content: '';
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 1.5rem;
+  height: 0.125rem;
+  border-radius: 0.125rem;
+  background-color: currentcolor;
+}
+
+.modal .close-button .icon.icon-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg)
+}
+
+.modal h2 {
+  padding: 1.25rem 1.5rem;
+  color: var(--white);
+  margin-top: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.modal h3 {
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: var(--teal);
+}
+
+.modal p {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  color: var(--text-color);
+}
+
+.modal .section.modal-header {
+  padding: 0;
+  margin: 0;
+}
+
+.modal .section.background-orange {
+  background-color: var(--orange);
+}
+
+.modal .section.modal-header picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.modal .section.modal-header img {
+  height: 5.46rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal .section.modal-description {
+  margin: 1.25rem 1.5rem 0;
+  padding: 0
+}
+
+.modal .section.modal-description ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal .section.modal-description li {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  color: var(--text-color);
+  background: url("/images/icon-tick.png") 0 0 no-repeat;
+}
+
+.modal .section.modal-scroll-bar {
+  margin: 1.25rem 1.5rem 0;
+  padding: 0.25rem 1.25rem;
+  background-color: var(--teal-light);
+  border: 0.0625rem solid var(--teal);
+  height: 9.375rem;
+  overflow: auto;
+  color: var(--purple);
+  overflow-y: scroll;
+}
+
+.modal .section.modal-scroll-bar::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+.modal .section.modal-scroll-bar::-webkit-scrollbar-track {
+  background-color: var(--light-color);
+  box-shadow: inset 0 0 0.375rem color(display-p3 0 0 0 / 30%);
+}
+
+.modal .section.modal-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: var(--teal);
+  box-shadow: inset 0 0 0.375rem color(display-p3 0 0 0 / 30%);
+}
+
+.modal .section.modal-links {
+  padding: 0.75rem 1.5rem 1.25rem;
+}
+
+.modal .section.border-top {
+  border-top: 0.0625rem solid var(--gray-light);
+  margin-top: 2.25rem;
+}
+
+.modal .section.modal-links p {
+  font-size: 0.8125rem;
+  flex: 1;
+}
+
+.modal .section.modal-links .default-content-wrapper {
+  display: flex;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.modal .section.button-small p.button-container {
+  flex: 0 1 auto;
+  width: 8.75rem;
+}
+
+.modal .section.modal-links p.button-container a {
+  line-height: 2.25rem;
+}
+
+.modal .section.modal-links p.button-container strong a {
+  background: linear-gradient(to top, var(--orange-btn) 0%, var(--orange-btn-light) 100%);
+  color: var(--white);
+}

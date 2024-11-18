@@ -1,0 +1,43 @@
+.notification-banner.block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--orange-btn-light);
+  color: var(--white);
+  padding: 0.8rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.notification-banner .notification-banner-message {
+  text-align: center;
+}
+
+.notification-banner.block * {
+  margin: 0;
+}
+
+.notification-banner.block .notification-banner-action p a {
+  padding: 0.25rem 0.6rem;
+  background: transparent;
+  color: inherit;
+  border: 1px solid var(--white);
+}
+
+.notification-banner.block .notification-banner-action p {
+  display: flex;
+}
+
+@media (width <= 768px) {
+  .notification-banner.block {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .notification-banner.block .notification-banner-action,
+  .notification-banner .notification-banner-action p a {
+    width: 100%;
+  }
+}

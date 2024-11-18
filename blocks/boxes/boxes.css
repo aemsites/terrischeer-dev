@@ -1,0 +1,170 @@
+.boxes .left-box-panel {
+    position: relative;
+    background: var(--white);
+    border-bottom: 2px solid var(--gray-dark);
+}
+
+.boxes .right-box-panel > div {
+    padding-top: 2.5rem;
+    padding-bottom: 0.9375rem;
+}
+
+.boxes .left-box-panel > div:first-child {
+    padding-top: 0.9375rem;
+    padding-bottom: 3.4375rem;
+}
+
+.boxes .combined-plus-desktop {
+    display: none;
+}
+
+.boxes .left-box-panel .left-box-title,
+.boxes .right-box-panel .right-box-title {
+    display: flex;
+    align-items: center;
+}
+
+.boxes h3,
+.boxes h4 {
+    color: var(--black);
+}
+
+.boxes span.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-right: 0.625rem;
+}
+
+.boxes ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.boxes ul li {
+    margin-left: 0;
+    padding-left: 1.625rem;
+    padding-bottom: 0.5rem;
+    line-height: 1.125rem;
+    letter-spacing: 0;
+    font-size: var(--body-font-size-l);
+    background: url('../../images/icon-tick.png') 0 0 no-repeat;
+}
+
+.boxes .left-box-panel .left-box-text h4,
+.boxes .right-box-panel .right-box-text h4 {
+    color: var(--teal);
+    font-weight: var(--font-weight-normal);
+}
+
+.boxes .combined-plus-mobile {
+    position: absolute;
+    width: 6.25rem;
+    height: 6.25rem;
+    top: auto;
+    bottom: -3.125rem;
+    left: calc(50% - 3.125rem);
+    z-index: 2;
+    background: url('../../images/plus-icon.png') 0 0 no-repeat;
+    background-size: 6.25rem 6.25rem;
+}
+
+@media (width >= 48rem) {
+    .boxes span.icon {
+        width: 3.75rem;
+        height: 3.75rem;
+        padding-right: 1.25rem;
+    }
+
+    .boxes .left-box-panel,
+    .boxes .right-box-panel {
+        padding: 0.625rem;
+        background: var(--gray);
+        margin-bottom: 1.25rem;
+        border: 1px solid transparent;
+    }
+
+    .boxes .left-box-panel > div:first-child,
+    .boxes .right-box-panel > div:first-child {
+        padding: 1.25rem 0.625rem 1.5625rem 1.5625rem;
+        background: var(--white);
+        border: 1px solid var(--gray-dark);
+    }
+
+    .boxes .left-box-panel .left-box-title h3,
+    .boxes .right-box-panel .right-box-title h3 {
+        font-weight: var(--font-weight-bold);
+        line-height: 1.125rem;
+        font-size: var(--heading-font-size-xl);
+    }
+
+    .boxes .combined-plus-mobile {
+        width: 8rem;
+        height: 8rem;
+        bottom: -4.6875rem;
+        left: calc(50% - 4rem);
+        background-size: unset;
+    }
+
+    .boxes ul {
+        padding: 0.625rem 6.25rem 2.5rem 0;
+    }
+}
+
+@media (width >= 62rem) {
+    .boxes {
+        position: relative;
+        display: inline-block;
+    }
+
+    .boxes .left-box-panel,
+    .boxes .right-box-panel {
+        width: 45%;
+        float: left;
+        min-height: 1px;
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
+    }
+
+    .boxes .left-box-panel {
+        margin-right: 0.9375rem;
+    }
+
+    .boxes .right-box-panel {
+        margin-left: 0.9375rem;
+    }
+
+    .boxes .left-box-panel > div:first-child,
+    .boxes .right-box-panel > div:first-child {
+        min-height: 29.875rem;
+        padding: 1.25rem 3.75rem 1.5625rem 1.5625rem;
+    }
+
+    .boxes .right-box-panel > div:first-child {
+        padding: 1.25rem 1.5625rem 1.5625rem 2.5rem;
+    }
+
+    .boxes .combined-plus-mobile {
+        display: none;
+    }
+
+    .boxes .combined-plus-desktop {
+        display: block;
+        position: absolute;
+        width: 8rem;
+        height: 8rem;
+        top: 12.1875rem;
+        left: calc(50% - 4.1875rem);
+        z-index: 2;
+        background: url('../../images/plus-icon.png') 0 0 no-repeat;
+    }
+
+    .boxes ul {
+        padding-right: unset;
+    }
+}
+
+@media (width >= 75rem) {
+    .boxes .combined-plus-desktop {
+        left: calc(50% - 4.875rem);
+    }
+}

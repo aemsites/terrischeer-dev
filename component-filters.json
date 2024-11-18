@@ -1,0 +1,165 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "text-image",
+      "video",
+      "page-title",
+      "policy-documents",
+      "faqs",
+      "ribbon",
+      "button-stack",
+      "callout",
+      "notification-banner",
+      "table",
+      "claims-process",
+      "textandbox",
+      "tabs-with-comments",
+      "related-articles",
+      "boxes",
+      "styled-lists",
+      "rich-text",
+      "bazaarvoice-integration",
+      "image-with-link",
+      "brochure-list",
+      "landing-ctas"
+    ]
+  },
+  {
+    "id": "boxes",
+    "components": [
+      "box"
+    ]
+  },
+  {
+    "id": "cards-image-title-description",
+    "components": [
+      "card-image-title-description"
+    ]
+  },
+  {
+    "id": "cards-centered-icon-title",
+    "components": [
+      "card-centered-icon-title"
+    ]
+  },
+  {
+    "id": "cards-logo-description",
+    "components": [
+      "card-logo-description"
+    ]
+  },
+  {
+    "id": "cards-products",
+    "components": [
+      "card-product"
+    ]
+  },
+  {
+    "id": "cards-benefits",
+    "components": [
+      "card-benefit"
+    ]
+  },
+  {
+    "id": "cards-title-description",
+    "components": [
+      "card-title-description"
+    ]
+  },
+  {
+    "id": "claims-process",
+    "components": [
+      "claims-process-option"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  },
+  {
+    "id": "faqs",
+    "components": [
+      "faq"
+    ]
+  },
+  {
+    "id": "policy-documents",
+    "components": [
+      "policy-document-group"
+    ]
+  },
+  {
+    "id": "related-articles",
+    "components": [
+      "related-article"
+    ]
+  },
+  {
+    "id": "styled-lists",
+    "components": [
+      "styled-list-column"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row"
+    ]
+  },
+  {
+    "id": "table-2-columns",
+    "components": [
+      "table-col-2"
+    ]
+  },
+  {
+    "id": "table-3-columns",
+    "components": [
+      "table-col-3"
+    ]
+  },
+  {
+    "id": "table-4-columns",
+    "components": [
+      "table-col-4"
+    ]
+  },
+  {
+    "id": "table-5-columns",
+    "components": [
+      "table-col-5"
+    ]
+  },
+  {
+    "id": "tabs-with-comments",
+    "components": [
+      "tabs-with-comments-item"
+    ]
+  }
+]

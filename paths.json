@@ -1,0 +1,14 @@
+{
+  "mappings": [
+    "/content/terrischeer/:/", 
+    "/content/dam/assets/:/assets/",
+    "/content/terrischeer/metadata:/metadata.json",
+    "/content/terrischeer/redirects:/redirects.json",
+    "/content/terrischeer/placeholders:/placeholders.json",
+    "/content/terrischeer/category-mapping:/category-mapping.json"
+  ],
+    "includes": [
+      "/content/terrischeer",
+      "/content/dam/assets"
+    ]
+}

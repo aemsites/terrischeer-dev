@@ -1,0 +1,223 @@
+.claims-process {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.claims-process .claim-process-option {
+  display: none;
+}
+
+.claim-process-menu > div > button {
+  height: 9.3rem;
+  width: 9.3rem;
+  border-radius: 9.3rem;
+  margin: 1rem 0.5rem;
+  background: var(--teal);
+  border: none;
+  color: white;
+  transition: 0.2s;
+  font-size: var(--heading-font-size-m);
+}
+
+.claims-process .claim-process-option > div {
+  flex: 1;
+  padding: 1.25rem;
+  margin-top: 0.3rem;
+  background-color: var(--teal-light);
+  position: relative;
+  border-radius: 6px;
+}
+
+.claims-process .claim-process-menu > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  flex-basis: auto;
+}
+
+.claims-process .claim-process-menu > div > p {
+  margin: 0;
+}
+
+.claims-process .claim-process-option > div > p {
+  font-size: 0.875rem;
+}
+
+.claims-process .claim-process-option > div:last-child {
+  background-color: var(--teal-mid);
+}
+
+.claims-process .claim-process-option > button {
+  flex: 1;
+  padding: 1.25rem;
+  background: var(--teal);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: 0.2s;
+  position: relative;
+}
+
+.claims-process .claim-process-option > button:hover,
+.claims-process .claim-process-option > button:focus {
+  background: var(--teal-dark-alt);
+}
+
+.claims-process .claim-process-option > button .icon {
+  margin-top: 1rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.claims-process .claim-process-option > button p {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.claims-process .claim-process-option > button .back-text {
+  position: absolute;
+  top: 0.25rem;
+  left: -0.15rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.claims-process .claim-process-option > button .back-text img {
+  transform: rotate(90deg) scale(0.5) translateY(-0.625rem);
+  transition: 0.2s;
+}
+
+.claims-process .claim-process-option > button:hover .back-text img,
+.claims-process .claim-process-option > button:focus .back-text img {
+  transform: rotate(90deg) scale(0.5) translateY(-0.3rem);
+}
+
+.claims-process .claim-process-option.open {
+  display: block;
+  animation: open-claim-option 0.35s cubic-bezier(.25,0,0,1);
+}
+
+.claims-process .claim-process-menu {
+  transition: 0.2s;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--teal-light-alt);
+}
+
+.claims-process .claim-process-menu > div:first-child {
+  background-color: var(--teal);
+  color: white;
+  font-weight: var(--font-weight-bold);
+  padding: 0 2rem;
+  font-size: var(--heading-font-size-l);
+  line-height: 1.1;
+  position: relative;
+  flex: 0 1 100%;
+  text-align: center;
+}
+
+.claims-process .claim-process-menu > div > button:hover,
+.claims-process .claim-process-menu > div > button:focus {
+  background: var(--teal-dark-alt);
+}
+
+.claims-process .claim-process-menu > div > button > span {
+  height: 5rem;
+  width: 5rem;
+}
+
+.claims-process .claim-process-menu > div > button:active > span,
+.claims-process .claim-process-option > button:active .icon {
+  transition: 0.1s;
+  transform: scale(0.9);
+}
+
+.claims-process .claim-process-menu > div > button > p {
+  margin: 0;
+}
+
+.claims-process .claim-process-menu.hidden {
+  display: none;
+}
+
+@keyframes open-claim-option {
+  from {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (width >= 62rem) {
+  .claims-process .claim-process-menu {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .claims-process .claim-process-option.open {
+    display: flex;
+  }
+
+  .claims-process .claim-process-option > div {
+    padding: 1.25rem 1.25rem 1.25rem 1.875rem;
+    margin: 0 0 0 0.3rem;
+  }
+
+  .claims-process .claim-process-menu > div {
+    min-height: 13.75rem;
+    flex: 1;
+  }
+
+  .claims-process .claim-process-option > div > p {
+    font-size: 0.875rem;
+  }
+
+  .claims-process .claim-process-option > div > h3 {
+    color: var(--teal);
+  }
+
+  .claims-process .claim-process-menu > div:first-child {
+    flex: 1;
+    text-align: left;
+  }
+
+  .claims-process .claim-process-menu > div:first-child::after {
+    content: url('../../icons/triangle-right-teal.svg');
+    position: absolute;
+    height: 4rem;
+    width: 4rem;
+    right: -2.5rem;
+  }
+
+  .claims-process .claim-process-option > div:not(:last-child)::before {
+    content: url('../../icons/claims-step-arrow.svg');
+    position: absolute;
+    right: -1.5rem;
+    top: 0.8rem;
+    z-index: 1;
+    transform: scale(0.75);
+  }
+
+  .claims-process .claim-process-menu > div:nth-child(2) {
+    padding-left: 1.5rem;
+  }
+
+  .claim-process-menu > div > button {
+    height: 11.25rem;
+    width: 11.25rem;
+    border-radius: 11.25rem;
+  }
+}

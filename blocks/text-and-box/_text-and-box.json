@@ -1,0 +1,60 @@
+{
+  "definitions": [
+    {
+      "title": "Text And Box",
+      "id": "textandbox",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Text-and-box",
+              "model": "textandbox"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [],
+  "models": [
+    {
+      "id": "textandbox",
+      "fields": [
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "label": "Text",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "label": "Box Title Icon",
+          "name": "box_titleIcon",
+          "valueType": "string",
+          "...": "../../models/icon-list/_textandbox-icons-list.json"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "box_title",
+          "label": "Box Title"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "boxtext",
+          "label": "Box Text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "definitions": [
+    {
+      "title": "Text Image",
+      "id": "text-image",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Text Image",
+              "model": "text-image"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [],
+  "models": [
+    {
+      "id": "text-image",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "content_imageMob",
+          "label": "Image Mobile",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "content_imageMobAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "content_imageDesk",
+          "label": "Image Desktop",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "content_imageDeskAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "content_text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ]
+}

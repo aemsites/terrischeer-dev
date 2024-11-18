@@ -1,0 +1,52 @@
+{
+  "options": [
+    {
+      "name": "Calculator",
+      "value": ":calculator-white:"
+    },
+    {
+      "name": "Call",
+      "value": ":call-white:"
+    },
+    {
+      "name": "Chevron down",
+      "value": ":chevron-down-white:"
+    },
+    {
+      "name": "Compare",
+      "value": ":compare-white:"
+    },
+    {
+      "name": "Document",
+      "value": ":document-white:"
+    },
+    {
+      "name": "Download",
+      "value": ":download-white:"
+    },
+    {
+      "name": "Email",
+      "value": ":email-white:"
+    },
+    {
+      "name": "Hamburger",
+      "value": ":hamburger-white:"
+    },
+    {
+      "name": "Online",
+      "value": ":online-white:"
+    },
+    {
+      "name": "Phone",
+      "value": ":phone-white:"
+    },
+    {
+      "name": "Question Fill",
+      "value": ":question-fill-white:"
+    },
+    {
+      "name": "Search",
+      "value": ":search-white:"
+    }
+  ]
+}

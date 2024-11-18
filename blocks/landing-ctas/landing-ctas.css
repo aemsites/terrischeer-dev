@@ -1,0 +1,59 @@
+.landing-ctas {
+  background-color: var(--teal-tide);
+  color: var(--white);
+  line-height: 1.5;
+  position: relative;
+  padding: 1.875rem 0.9375rem;
+}
+
+.landing-ctas > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-ctas p {
+  margin-top: 0;
+}
+
+.landing-ctas .heading {
+  font-size: 1rem;
+}
+
+.landing-ctas .description {
+  font-size: 0.875rem;
+}
+
+.landing-ctas .cta-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 75%;
+}
+
+.landing-ctas .cta-wrapper .button-container {
+  flex: 1;
+  margin: 0.9375rem 0;
+}
+
+.landing-ctas .cta-wrapper .button {
+  padding: 0.3125rem;
+  line-height: 1.875rem;
+}
+
+@media (width >= 48rem) {
+  .landing-ctas {
+    padding: 3.75rem 0;
+  }
+
+  .landing-ctas .cta-wrapper {
+    flex-direction: row;
+  }
+
+  .landing-ctas .cta-wrapper .button-container {
+    margin: 1.875rem;
+    max-width: 24.375rem;
+  }
+}
+

@@ -1,0 +1,149 @@
+{
+  "definitions": [
+    {
+      "title": "Rich Text",
+      "id": "rich-text",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Rich Text",
+              "model": "rich-text"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [],
+  "models": [
+    {
+      "id": "rich-text",
+      "fields": [
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "rich-text-content",
+          "label": "Text",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "alignment",
+          "label": "Align Content",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left-aligned"
+            },
+            {
+              "name": "Center",
+              "value": "center-aligned"
+            },
+            {
+              "name": "Right",
+              "value": "right-aligned"
+            }
+          ]
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "text-color",
+          "label": "Color",
+          "options": [
+            {
+              "name": "h1 black",
+              "value": "h1-black"
+            },
+            {
+              "name": "h2 black",
+              "value": "h2-black"
+            },
+            {
+              "name": "h3 black",
+              "value": "h3-black"
+            },
+            {
+              "name": "h4 black",
+              "value": "h4-black"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "text_font",
+          "label": "Font",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default-font"
+            },
+            {
+              "name": "Big",
+              "value": "big-font"
+            },
+            {
+              "name": "Small",
+              "value": "small-font"
+            },
+            {
+              "name": "Thin",
+              "value": "thin-font"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "list_style",
+          "label": "List Style",
+          "...": "../../models/icon-list/_richtext-icons-list.json"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "background_color",
+          "label": "Background Color",
+          "options": [
+            {
+              "name": "Default",
+              "value": "default-color"
+            },
+            {
+              "name": "Teal",
+              "value": "backgroundcolor-teal"
+            },
+            {
+              "name": "Teal Mid Light",
+              "value": "backgroundcolor-teal-mid-light"
+            }
+          ]
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "miscellaneous",
+          "label": "Others",
+          "options": [
+            {
+              "name": "Bottom Border",
+              "value": "bottom-border"
+            },
+            {
+              "name": "Left padding",
+              "value": "left-padding"
+            },
+            {
+              "name": "CTA Button",
+              "value": "cta-button"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

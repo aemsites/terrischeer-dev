@@ -1,0 +1,92 @@
+{
+  "definitions": [
+    {
+      "title": "Claims Process",
+      "id": "claims-process",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Claims Process",
+              "filter": "claims-process",
+              "model": "claims-process"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Claims Process Option",
+      "id": "claims-process-option",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/item",
+            "template": {
+              "name": "Claims Process Option",
+              "model": "claims-process-option"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [
+    {
+      "id": "claims-process",
+      "components": ["claims-process-option"]
+    }
+  ],
+  "models": [
+    {
+      "id": "claims-process",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "claimsHeading",
+          "value": "",
+          "label": "Claims heading"
+        }
+      ]
+    },
+    {
+      "id": "claims-process-option",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "claimOptionName",
+          "value": "",
+          "label": "Name"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "claimOptionIcon",
+          "...": "../../models/icon-list/_white-icons-list.json",
+          "label": "Icon"
+        },
+        {
+          "component": "richtext",
+          "name": "contentSection1",
+          "label": "Content Section 1",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "contentSection2",
+          "label": "Content Section 2",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "contentSection3",
+          "label": "Content Section 3",
+          "valueType": "string"
+        }
+      ]
+    }
+  ]
+}

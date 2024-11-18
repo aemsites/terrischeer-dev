@@ -1,0 +1,57 @@
+{
+    "options": [
+      {
+        "name": "No Icon",
+        "value": ""
+      },
+      {
+        "name": "Calculator (white)",
+        "value": ":calculator-white:"
+      },
+      {
+        "name": "Compare (white)",
+        "value": ":compare-white:"
+      },
+      {
+        "name": "Document (white)",
+        "value": ":document-white:"
+      },
+      {
+        "name": "Download (white)",
+        "value": ":download-white:"
+      },
+      {
+        "name": "Friends (grey)",
+        "value": ":friends-grey:"
+      },
+      {
+        "name": "Friends (teal)",
+        "value": ":friends-teal:"
+      },
+      {
+        "name": "House fire (grey)",
+        "value": ":house-fire-grey:"
+      },
+      {
+        "name": "House fire (teal)",
+        "value": ":house-fire-teal:"
+      },
+      {
+        "name": "Beach Ball (grey)",
+        "value": ":beach-ball-grey:"
+      },
+      {
+        "name": "Beach Ball (teal)",
+        "value": ":beach-ball-teal:"
+      },
+      {
+        "name": "Ten percent (indigo)",
+        "value": ":ten-percent-indigo:"
+      },
+      {
+        "name": "Five percent (green)",
+        "value": ":five-percent-green:"
+      }
+    ]
+  }
+  

@@ -1,0 +1,82 @@
+{
+  "definitions": [
+    {
+      "title": "Bazaarvoice Integration",
+      "id": "bazaarvoice-integration",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Bazaarvoice Integration",
+              "model": "bazaarvoice-integration",
+              "block_type": "bv_overview_rating"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [],
+  "models": [
+    {
+      "id": "bazaarvoice-integration",
+      "fields": [
+        {
+          "component": "select",
+          "label": "Block type",
+          "name": "block_type",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "BV Overview Rating",
+              "value": "bv_overview_rating"
+            },
+            {
+              "name": "BV Reviews",
+              "value": "bv_reviews"
+            }
+          ]
+        },
+        {
+          "component": "select",
+          "label": "Bazaarvoice Product ID",
+          "name": "bv_productid",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Landlord Insurance",
+              "value": "landlordinsurance"
+            },
+            {
+              "name": "Holiday Rental",
+              "value": "holidayrental"
+            },
+            {
+              "name": "Building Insurance",
+              "value": "buildinginsurance"
+            },
+            {
+              "name": "Combined Coverage",
+              "value": "combinedcoverage"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "review_link",
+          "label": "Review Link",
+          "condition": {
+            "===": [
+              {
+                "var": "block_type"
+              },
+              "bv_overview_rating"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.tabs-with-comments .custom-side-nav,
+.tabs-with-comments .button-container,
+.tabs-with-comments .navigation,
+.tabs-with-comments > div:nth-child(11) > ul {
+    display: none;
+}
+
+.tabs-with-comments h3 {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--teal);
+    margin-top: var(--heading-font-size-l);
+    margin-bottom: var(--heading-font-size-xss);
+}
+
+.tabs-with-comments .dropdown-list {
+    background: url('../../icons/chevron-down-teal.svg') 98% no-repeat, 
+                linear-gradient(to bottom, #f7f7f7 0%, #e5e3e6 100%);
+    background-size: var(--heading-font-size-l);
+    width: 100%;
+    font-size: 0.938rem;
+    border-radius: 0;
+    font-weight: bold;
+    padding: var(--heading-font-size-xss);
+    border: 0.063rem var(--light-grey) solid;
+    color: var(--dark-shade);
+    appearance: none;
+}
+
+.tabs-with-comments-wrapper > .tabs-with-comments > div > div[style="display: block;"] > p,
+.tabs-with-comments-wrapper > .tabs-with-comments > div ul {
+    font-size: 0.875rem;
+    line-height: var(--heading-font-size-l);
+}
+
+.tabs-with-comments-wrapper > .tabs-with-comments > div ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tabs-with-comments-wrapper > .tabs-with-comments > div:nth-last-child(n+3) ul li {
+    background: url('../../images/icon-tick.png') 0 0 no-repeat;
+    padding: 0 1.5625rem var(--heading-font-size-xss);
+    position: relative;
+}
+
+.tabs-with-comments-wrapper > .tabs-with-comments > div h2 {
+    font-size: 1.125rem;
+    font-weight: normal;
+    color: var(--teal);
+}
+
+@media (width >= 48rem) {
+    .tabs-with-comments .dropdown-list {
+        background: none;
+        width: auto;
+        padding: 0;
+        border-radius: inherit;
+        font-weight: normal;
+        appearance: auto;
+        color: inherit;
+    }
+
+    .tabs-with-comments > div:nth-last-of-type(2) > ul {
+        display: block;
+        position: relative;
+        margin-bottom: 2.5rem;
+        padding: 4rem 1.875rem 1.875rem;
+        box-shadow: 0 0.125rem 0.313rem var(--taupe-gray);
+        background-color: var(--ivory-gray);
+        background-image: url('../../images/bg-testimonial-tablet.png');
+        background-repeat: no-repeat;
+        background-position: center 0.938rem;
+        background-size: 92%;
+        color: var(--black);
+    }
+
+    .tabs-with-comments > div:nth-last-of-type(2) > ul > li {
+        border-bottom: 0.063rem solid var(--white);
+    }
+
+    .tabs-with-comments > div:nth-last-of-type(2) > ul > li > p {
+        font-size: 0.875rem;
+        line-height: var(--heading-font-size-l);
+        padding-bottom: var(--heading-font-size-xl);
+    }
+
+}
+
+@media (width >= 62rem) {
+    .tabs-with-comments {
+        padding-bottom: 44rem;
+    }
+
+    .tabs-with-comments .custom-side-nav {
+        display: block;
+        width: 33.33%;
+        list-style-type: none;
+        padding: 0;
+        padding-bottom: var(--heading-font-size-xss);
+    }
+
+    .tabs-with-comments .custom-side-nav li {
+        background-color: var(--white);
+        border: 0.063rem solid var(--teal);
+        box-sizing: border-box;
+        position: relative;
+        list-style-type: none;
+    }
+
+    .tabs-with-comments .custom-side-nav li:not(:last-child) {
+        border-bottom: 0;
+    }
+
+    .tabs-with-comments .custom-side-nav ul {
+        padding-left: 0;
+    }
+        
+    .tabs-with-comments .custom-side-nav li a {
+        display: block;
+        padding: 0.938rem;
+        line-height: var(--heading-font-size-xss);
+        color: var(--dark-grayish-blue);
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    .tabs-with-comments .custom-side-nav li:hover a {
+        color: var(--black);
+    }
+
+    .tabs-with-comments .custom-side-nav li:focus-within a {
+        color: var(--white);
+    }
+
+    .tabs-with-comments .custom-side-nav li.active {
+        background: var(--dark-color);
+        border-color: var(--dark-color);
+        color: var(--white);
+        position: relative;
+      }
+      
+      .tabs-with-comments .custom-side-nav li.active::after {
+        content: url('../../images/triangle-pointer.png');
+        z-index: 100;
+        position: absolute;
+        right: -0.6rem;
+        top: 0.7rem;
+        background: url('../../images/triangle-pointer.png') 0 0 no-repeat;
+      }
+
+    .tabs-with-comments .dropdown-list {
+        display: none;
+    }
+
+    .tabs-with-comments > div:nth-last-of-type(2) > ul {
+        width: 33.33%;
+        float: left;
+        display: block;
+        position: relative;
+        margin-bottom: 2.5rem;
+        background-color: var(--ivory-gray);
+        background-image: url('../../images/bg-testimonial.png');
+        background-repeat: no-repeat;
+        background-position: center 0.938rem;
+        background-size: 80%;
+        color: var(--black);
+        padding: 4.063rem 1.875rem 13.125rem;
+        box-shadow: 0 0.125rem 0.313rem var(--taupe-gray);
+    }
+
+    .tabs-with-comments-wrapper {
+        position: relative;
+    }
+
+    .tabs-with-comments-wrapper > .tabs-with-comments > div > div[style="display: block;"] {
+        width: 66.66%;
+        position: absolute;
+        top: -1.25rem;
+        right: 0;
+        min-height: 0.063rem;
+        padding-left: 2.188rem;
+        padding-right: 0.938rem;
+        animation: slide-in 0.3s ease-out;
+    }
+
+    @keyframes slide-in {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+}
+
+@media (width >= 75rem) {
+    .tabs-with-comments > div:nth-last-of-type(2) > ul {
+        padding: 5rem 1.875rem 1.875rem;
+        background-size: 60%;
+        list-style-image: url('../../images/bg-testimonial.png');
+    }
+}

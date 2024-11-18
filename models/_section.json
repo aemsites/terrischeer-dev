@@ -1,0 +1,221 @@
+{
+  "definitions": [
+    {
+      "title": "Section",
+      "id": "section",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/section/v1/section",
+            "template": {
+              "model": "section"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "style",
+          "label": "Style",
+          "options": [
+            {
+              "name": "Mobile Only",
+              "value": "mobile-only"
+            },
+            {
+              "name": "Desktop Only",
+              "value": "desktop-only"
+            },
+            {
+              "name": "Mobile Background Teal",
+              "value": "mobile-background-teal"
+            },
+            {
+              "name": "Benefits Background Plain",
+              "value": "benefits-background-plain"
+            },
+            {
+              "name": "Full Width",
+              "value": "full-width"
+            },
+            {
+              "name": "Centered Title",
+              "value": "centered-title"
+            },
+            {
+              "name": "Modal Header",
+              "value": "modal-header"
+            },
+            {
+              "name": "Modal Description",
+              "value": "modal-description"
+            },
+            {
+              "name": "Modal Scroll Bar",
+              "value": "modal-scroll-bar"
+            },
+            {
+              "name": "Modal Links",
+              "value": "modal-links"
+            },
+            {
+              "name": "Background Color",
+              "children": [
+                {
+                  "name": "Orange",
+                  "value": "background-orange"
+                }
+              ]
+            },
+            {
+              "name": "Border",
+              "children": [
+                {
+                  "name": "Add Bottom Border",
+                  "value": "border-bottom"
+                },
+                {
+                  "name": "No Border In mobile",
+                  "value": "no-border-mobile"
+                }
+              ]
+            },
+            {
+              "name": "Padding",
+              "children": [
+                {
+                  "name": "Remove Top Padding",
+                  "value": "no-padding-top"
+                }
+              ]
+            },
+            {
+              "name": "Button Size",
+              "children": [
+                {
+                  "name": "Small",
+                  "value": "button-small"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "boolean",
+          "name": "is-tab",
+          "label": "Convert To Tab",
+          "value": false
+        },
+        {
+          "component": "text",
+          "name": "tab-name",
+          "label": "Tab Name",
+          "condition": { "===": [{ "var": "is-tab" }, true] }
+        },
+        {
+          "component": "boolean",
+          "name": "add-sidebar",
+          "label": "Add sidebar",
+          "value": false
+        },
+        {
+          "component": "aem-content",
+          "name": "sidebar-link",
+          "label": "Side Bar Reference",
+          "condition": {
+            "===": [
+              {
+                "var": "add-sidebar"
+              },
+              true
+            ]
+          }
+        },
+        {
+          "component": "boolean",
+          "name": "sidebar-mobile-view",
+          "label": "Mobile View",
+          "value": false,
+          "condition": {
+            "===": [
+              {
+                "var": "add-sidebar"
+              },
+              true
+            ]
+          }
+        },
+        {
+          "component": "select",
+          "name": "sidebar-tablet-view",
+          "label": "Tablet View",
+          "value": "sidebar-hidden",
+          "options": [
+            {
+              "name": "Do not show",
+              "value": "sidebar-hidden"
+            },
+            {
+              "name": "Show as Full Width",
+              "value": "sidebar-tablet-full-width"
+            },
+            {
+              "name": "Show as Sidebar",
+              "value": "sidebar-tablet-view"
+            }
+          ],
+          "condition": {
+            "===": [
+              {
+                "var": "add-sidebar"
+              },
+              true
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "hero",
+        "cards",
+        "columns",
+        "fragment",
+        "text-image",
+        "video",
+        "page-title",
+        "policy-documents",
+        "faqs",
+        "ribbon",
+        "button-stack",
+        "callout",
+        "notification-banner",
+        "table",
+        "claims-process",
+        "textandbox",
+        "tabs-with-comments",
+        "related-articles",
+        "boxes",
+        "styled-lists",
+        "rich-text",
+        "bazaarvoice-integration",
+        "image-with-link",
+        "brochure-list",
+        "landing-ctas"
+      ]
+    }
+  ]
+}

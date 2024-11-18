@@ -1,9 +1,8 @@
-# Your Project's Title...
-Your project's description...
+# Terri Scheer
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--suncorp--aemsites.aem.page/
+- Live: https://main--suncorp--aemsites.aem.live/
 
 ## Installation
 

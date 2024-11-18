@@ -1,0 +1,59 @@
+{
+  "models": [
+    {
+      "id": "page-metadata",
+      "fields": [
+        {
+          "component": "container",
+          "label": "Metadata",
+          "fields": [
+            {
+              "component": "text",
+              "valueType": "string",
+              "name": "jcr:title",
+              "label": "Title"
+            },
+            {
+              "component": "text",
+              "valueType": "string",
+              "name": "jcr:description",
+              "label": "Description"
+            },
+            {
+              "component": "multiselect",
+              "valueType": "string",
+              "name": "cq:robotsTags",
+              "label": "Robots Tags",
+              "options": [
+                {
+                  "name": "noindex",
+                  "value": "noindex"
+                }
+              ]
+            },
+            {
+              "component": "text",
+              "valueType": "string",
+              "name": "cq:canonicalUrl",
+              "label": "Canonical Url"
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "image",
+              "label": "Image",
+              "multi": false
+            },
+            {
+              "component": "aem-content",
+              "valueType": "string",
+              "name": "notificationfragment",
+              "label": "Notification Fragment",
+              "multi": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

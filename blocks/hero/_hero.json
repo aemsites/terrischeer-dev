@@ -1,0 +1,317 @@
+{
+  "definitions": [
+    {
+      "title": "Hero",
+      "id": "hero",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Hero",
+              "model": "hero"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "filters": [],
+  "models": [
+    {
+      "id": "hero",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Options",
+          "valueType": "string",
+          "required": true,
+          "maxSize": 4,
+          "options": [
+            {
+              "name": "Buttons Style",
+              "children" : [
+                {
+                  "name": "Stack",
+                  "value": "buttons-stack"
+                },
+                {
+                  "name": "Tabs",
+                  "value": "tabs"
+                }
+              ]
+            },
+            {
+              "name": "Variant",
+              "children" : [
+                {
+                  "name": "Text Coverage",
+                  "value": "coverage"
+                },
+                {
+                  "name": "Image Coverage",
+                  "value": "imagecoverage"
+                }
+              ]
+            },
+            {
+              "name": "Font Color",
+              "children" : [
+                {
+                  "name": "White",
+                  "value": "font-white"
+                }
+              ]
+            },
+            {
+              "name": "Background",
+              "children" : [
+                {
+                  "name": "Gradient",
+                  "value": "background-gradient"
+                }
+              ]
+            },
+            {
+              "name": "Content Border",
+              "children" : [
+                {
+                  "name": "Orange",
+                  "value": "left-border-orange"
+                },
+                {
+                  "name": "White",
+                  "value": "left-border-white"
+                }
+              ]
+            },
+            {
+              "name": "Banner Height",
+              "children" : [
+                {
+                  "name": "Small",
+                  "value": "height-small"
+                },
+                {
+                  "name": "Scale with Width",
+                  "value": "height-scale-vw"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "active-button",
+          "label": "Active Button",
+          "value": "1",
+          "condition": { "in": ["tabs", { "var": "classes" }] }
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "content_image_mobile",
+          "label": "Image Mobile",
+          "multi": false,
+          "condition": { "!": { "or": [
+            { "in": ["tabs", { "var": "classes" }] },
+            { "in": ["buttons-stack", { "var": "classes" }] },
+            { "in": ["imagecoverage", { "var": "classes" }] }]}
+          }
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "content_image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "content_imageAlt",
+          "label": "Image Alt",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "header_icon1",
+          "label": "Title Icon 1",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "header_icon2",
+          "label": "Title Icon 2",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "name": "header_title",
+          "value": "",
+          "label": "Title",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "header_subtitle",
+          "value": "",
+          "label": "Sub Title",
+          "valueType": "string",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "value": "",
+          "label": "Description",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["coverage", "tabs"] ] }]}
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "discount_one_icon",
+          "label": "Discount Icon 1",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "discount_one_description",
+          "value": "",
+          "label": "Discount Description 1",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "discount_two_icon",
+          "label": "Discount Icon 2",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "discount_two_description",
+          "value": "",
+          "label": "Discount Description 2",
+          "condition": { "in": ["coverage", { "var": "classes" }] }
+        },
+        {
+          "component": "tab",
+          "name": "tab1",
+          "label": "Button 1"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "button1_icon",
+          "label": "Icon",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["buttons-stack", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button1_text",
+          "value": "",
+          "label": "Text",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["buttons-stack", "tabs"] ] }]}
+        },
+        {
+          "component": "tab",
+          "name": "tab2",
+          "label": "Button 2"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "button2_icon",
+          "label": "Icon",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["buttons-stack", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button2_text",
+          "value": "",
+          "label": "Text",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["buttons-stack", "tabs"] ] }]}
+        },
+        {
+          "component": "tab",
+          "name": "tab3",
+          "label": "Button 3"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "button3_icon",
+          "label": "Icon",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["buttons-stack", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button3_text",
+          "value": "",
+          "label": "Text",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["buttons-stack", "tabs"] ] }]}
+        },
+        {
+          "component": "tab",
+          "name": "tab4",
+          "label": "Button 4"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "button4_icon",
+          "label": "Icon",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["buttons-stack", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button4_text",
+          "value": "",
+          "label": "Text",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["buttons-stack", "tabs"] ] }]}
+        },
+        {
+          "component": "tab",
+          "name": "tab5",
+          "label": "Button 5"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "button5_icon",
+          "label": "Icon",
+          "...": "../../models/icon-list/_hero-icons-list.json",
+          "condition": { "in": ["buttons-stack", { "var": "classes" }] }
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "button5_text",
+          "value": "",
+          "label": "Text",
+          "condition": {"some": [{ "var": "classes" }, { "in": [ { "var": "" }, ["buttons-stack", "tabs"] ] }]}
+        }
+      ]
+    }
+  ]
+}

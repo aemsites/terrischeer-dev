@@ -1,0 +1,40 @@
+version: 1
+
+indices:
+  pages:
+    include:
+      - '/**'
+    exclude:
+      - '/drafts'
+      - '/drafts/**'
+      - '/nav'
+      - '/**/nav'
+      - '/footer'
+      - '/**/footer'
+      - '/metadata'
+      - '/fragments'
+      - '/fragments/**'      
+      - '/modals'
+      - '/modals/**'
+      - '/placeholders'
+      - '/content/**'
+    target: /query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      imageThumbnail:
+        select: head > meta[property="og:image"]
+        value: attribute(el, 'content')
+      publishDate:
+        select: head > meta[name="published-time"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")

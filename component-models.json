@@ -1,0 +1,5333 @@
+[
+  {
+    "id": "image",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      }
+    ]
+  },
+  {
+    "id": "title",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Mobile Only",
+            "value": "mobile-only"
+          },
+          {
+            "name": "Desktop Only",
+            "value": "desktop-only"
+          },
+          {
+            "name": "Mobile Background Teal",
+            "value": "mobile-background-teal"
+          },
+          {
+            "name": "Benefits Background Plain",
+            "value": "benefits-background-plain"
+          },
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          },
+          {
+            "name": "Centered Title",
+            "value": "centered-title"
+          },
+          {
+            "name": "Modal Header",
+            "value": "modal-header"
+          },
+          {
+            "name": "Modal Description",
+            "value": "modal-description"
+          },
+          {
+            "name": "Modal Scroll Bar",
+            "value": "modal-scroll-bar"
+          },
+          {
+            "name": "Modal Links",
+            "value": "modal-links"
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Orange",
+                "value": "background-orange"
+              }
+            ]
+          },
+          {
+            "name": "Border",
+            "children": [
+              {
+                "name": "Add Bottom Border",
+                "value": "border-bottom"
+              },
+              {
+                "name": "No Border In mobile",
+                "value": "no-border-mobile"
+              }
+            ]
+          },
+          {
+            "name": "Padding",
+            "children": [
+              {
+                "name": "Remove Top Padding",
+                "value": "no-padding-top"
+              }
+            ]
+          },
+          {
+            "name": "Button Size",
+            "children": [
+              {
+                "name": "Small",
+                "value": "button-small"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "name": "is-tab",
+        "label": "Convert To Tab",
+        "value": false
+      },
+      {
+        "component": "text",
+        "name": "tab-name",
+        "label": "Tab Name",
+        "condition": {
+          "===": [
+            {
+              "var": "is-tab"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "add-sidebar",
+        "label": "Add sidebar",
+        "value": false
+      },
+      {
+        "component": "aem-content",
+        "name": "sidebar-link",
+        "label": "Side Bar Reference",
+        "condition": {
+          "===": [
+            {
+              "var": "add-sidebar"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "boolean",
+        "name": "sidebar-mobile-view",
+        "label": "Mobile View",
+        "value": false,
+        "condition": {
+          "===": [
+            {
+              "var": "add-sidebar"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "name": "sidebar-tablet-view",
+        "label": "Tablet View",
+        "value": "sidebar-hidden",
+        "options": [
+          {
+            "name": "Do not show",
+            "value": "sidebar-hidden"
+          },
+          {
+            "name": "Show as Full Width",
+            "value": "sidebar-tablet-full-width"
+          },
+          {
+            "name": "Show as Sidebar",
+            "value": "sidebar-tablet-view"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "add-sidebar"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "container",
+        "label": "Metadata",
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:title",
+            "label": "Title"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "jcr:description",
+            "label": "Description"
+          },
+          {
+            "component": "multiselect",
+            "valueType": "string",
+            "name": "cq:robotsTags",
+            "label": "Robots Tags",
+            "options": [
+              {
+                "name": "noindex",
+                "value": "noindex"
+              }
+            ]
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "cq:canonicalUrl",
+            "label": "Canonical Url"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "image",
+            "label": "Image",
+            "multi": false
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "notificationfragment",
+            "label": "Notification Fragment",
+            "multi": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bazaarvoice-integration",
+    "fields": [
+      {
+        "component": "select",
+        "label": "Block type",
+        "name": "block_type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "BV Overview Rating",
+            "value": "bv_overview_rating"
+          },
+          {
+            "name": "BV Reviews",
+            "value": "bv_reviews"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Bazaarvoice Product ID",
+        "name": "bv_productid",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Landlord Insurance",
+            "value": "landlordinsurance"
+          },
+          {
+            "name": "Holiday Rental",
+            "value": "holidayrental"
+          },
+          {
+            "name": "Building Insurance",
+            "value": "buildinginsurance"
+          },
+          {
+            "name": "Combined Coverage",
+            "value": "combinedcoverage"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "review_link",
+        "label": "Review Link",
+        "condition": {
+          "===": [
+            {
+              "var": "block_type"
+            },
+            "bv_overview_rating"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "box",
+    "fields": [
+      {
+        "component": "select",
+        "label": "Box Icon",
+        "name": "box_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Friends",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire",
+            "value": ":house-fire-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "box_title",
+        "value": "",
+        "label": "Box Title"
+      },
+      {
+        "component": "richtext",
+        "name": "boxtext",
+        "value": "",
+        "label": "Box Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "brochure-list",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "bgImage",
+        "label": "Background image",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "bgImageAlt",
+        "label": "Background Image Alt Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "ribbonText",
+        "label": "Text",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "button-stack",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Button 1"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button1_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1_link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1_linkText",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1_linkTitle",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Use primary styling",
+        "name": "button1_primaryStyle",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Button 2"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button2_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2_link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2_linkText",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2_linkTitle",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Use primary styling",
+        "name": "button2_primaryStyle",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "name": "tab3",
+        "label": "Button 3"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button3_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button3_link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button3_linkText",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button3_linkTitle",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Use primary styling",
+        "name": "button3_primaryStyle",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "name": "tab4",
+        "label": "Button 4"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button4_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button4_link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button4_linkText",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button4_linkTitle",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Use primary styling",
+        "name": "button4_primaryStyle",
+        "valueType": "boolean"
+      },
+      {
+        "component": "tab",
+        "name": "tab5",
+        "label": "Button 5"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button5_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button5_link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button5_linkText",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button5_linkTitle",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Use primary styling",
+        "name": "button5_primaryStyle",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "callout",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "tagline",
+        "label": "Tagline"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "info_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "info_text",
+        "label": "Text"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "filter",
+        "label": "Variants",
+        "value": "cards",
+        "options": [
+          {
+            "name": "Image Title Description",
+            "value": "cards-image-title-description"
+          },
+          {
+            "name": "Centered Icon Title",
+            "value": "cards-centered-icon-title"
+          },
+          {
+            "name": "Logo And Description",
+            "value": "cards-logo-description"
+          },
+          {
+            "name": "Product",
+            "value": "cards-products"
+          },
+          {
+            "name": "Benefit",
+            "value": "cards-benefits"
+          },
+          {
+            "name": "Title Description",
+            "value": "cards-title-description"
+          }
+        ]
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "columns-mobile",
+        "label": "Columns in Mobile view",
+        "value": "1"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "columns-tablet",
+        "label": "Columns in Tablet view",
+        "value": "3"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "columns-desktop",
+        "label": "Columns in Desktop view",
+        "value": "3"
+      }
+    ]
+  },
+  {
+    "id": "card-image-title-description",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "group_title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "group_description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-logo-description",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "hidden": true
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "logo",
+        "label": "Logo",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card-centered-icon-title",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "hidden": true,
+        "value": "centered-icon-title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "group_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "Arrow circle",
+            "value": ":arrow-circle-teal:"
+          },
+          {
+            "name": "Beach ball",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Building",
+            "value": ":building-teal:"
+          },
+          {
+            "name": "Check",
+            "value": ":check-teal:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-teal:"
+          },
+          {
+            "name": "Chevron right",
+            "value": ":chevron-right-teal:"
+          },
+          {
+            "name": "Contents",
+            "value": ":contents-teal:"
+          },
+          {
+            "name": "Exclamation",
+            "value": ":exclamation-teal:"
+          },
+          {
+            "name": "Fire",
+            "value": ":fire-teal:"
+          },
+          {
+            "name": "Friends",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Legal",
+            "value": ":legal-teal:"
+          },
+          {
+            "name": "Menu search",
+            "value": ":menu-search-teal:"
+          },
+          {
+            "name": "PDF",
+            "value": ":pdf-file-teal:"
+          },
+          {
+            "name": "Pets",
+            "value": ":pets-teal:"
+          },
+          {
+            "name": "Plus",
+            "value": ":plus-teal:"
+          },
+          {
+            "name": "Question",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Relet",
+            "value": ":relet-teal:"
+          },
+          {
+            "name": "Rent",
+            "value": ":rent-teal:"
+          },
+          {
+            "name": "Repair",
+            "value": ":repair-teal:"
+          },
+          {
+            "name": "10 percent",
+            "value": ":10-percent-teal:"
+          },
+          {
+            "name": "Triangle right",
+            "value": ":triangle-right-teal:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "group_otherIcon",
+        "label": "Icon Name (Required if 'Other' is selected)",
+        "value": ":icon-name:",
+        "condition": {
+          "in": [
+            ":other:",
+            {
+              "var": "group_icon"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "group_title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "group_subTitle",
+        "label": "Sub Title",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "card-product",
+    "fields": [
+      {
+        "component": "select",
+        "label": "Active",
+        "name": "classes",
+        "value": "",
+        "options": [
+          {
+            "name": "Active",
+            "value": "active"
+          },
+          {
+            "name": "Not Active",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "heading_titleIcon",
+        "label": "Title Icon",
+        "options": [
+          {
+            "name": "Arrow circle",
+            "value": ":arrow-circle-teal:"
+          },
+          {
+            "name": "Beach ball",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Building",
+            "value": ":building-teal:"
+          },
+          {
+            "name": "Check",
+            "value": ":check-teal:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-teal:"
+          },
+          {
+            "name": "Chevron right",
+            "value": ":chevron-right-teal:"
+          },
+          {
+            "name": "Contents",
+            "value": ":contents-teal:"
+          },
+          {
+            "name": "Exclamation",
+            "value": ":exclamation-teal:"
+          },
+          {
+            "name": "Fire",
+            "value": ":fire-teal:"
+          },
+          {
+            "name": "Friends",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Legal",
+            "value": ":legal-teal:"
+          },
+          {
+            "name": "Menu search",
+            "value": ":menu-search-teal:"
+          },
+          {
+            "name": "PDF",
+            "value": ":pdf-file-teal:"
+          },
+          {
+            "name": "Pets",
+            "value": ":pets-teal:"
+          },
+          {
+            "name": "Plus",
+            "value": ":plus-teal:"
+          },
+          {
+            "name": "Question",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Relet",
+            "value": ":relet-teal:"
+          },
+          {
+            "name": "Rent",
+            "value": ":rent-teal:"
+          },
+          {
+            "name": "Repair",
+            "value": ":repair-teal:"
+          },
+          {
+            "name": "10 percent",
+            "value": ":10-percent-teal:"
+          },
+          {
+            "name": "Triangle right",
+            "value": ":triangle-right-teal:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading_otherIcon",
+        "label": "Icon Name (Required if 'Other' is selected)",
+        "value": ":icon-name:",
+        "condition": {
+          "in": [
+            ":other:",
+            {
+              "var": "heading_titleIcon"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heading_title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "body_cost",
+        "label": "Cost",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "label": "Bazaarvoice Product ID",
+        "name": "bv_productid",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Don't show BV rating",
+            "value": "disable"
+          },
+          {
+            "name": "Landlord Insurance",
+            "value": "landlordinsurance"
+          },
+          {
+            "name": "Holiday Rental",
+            "value": "holidayrental"
+          },
+          {
+            "name": "Building Insurance",
+            "value": "buildinginsurance"
+          },
+          {
+            "name": "Combined Coverage",
+            "value": "combinedcoverage"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Button 1"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1_link",
+        "label": "Button 1 Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1_linkText",
+        "label": "Button 1 Text"
+      },
+      {
+        "component": "select",
+        "name": "button1_linkType",
+        "label": "Button 1 Type",
+        "value": "",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "CTA",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Button 2"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2_link",
+        "label": "Button 2 Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2_linkText",
+        "label": "Button 2 Text"
+      },
+      {
+        "component": "select",
+        "name": "button2_linkType",
+        "label": "Button 2 Type",
+        "value": "",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "CTA",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "card-benefit",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "heading_titleIcon",
+        "label": "Title Icon",
+        "options": [
+          {
+            "name": "Tick Icon Large",
+            "value": ":tick-icon-large:"
+          },
+          {
+            "name": "Other",
+            "value": ":other:"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading_otherIcon",
+        "label": "Icon Name (Required if 'Other' is selected)",
+        "value": ":icon-name:",
+        "condition": {
+          "in": [
+            ":other:",
+            {
+              "var": "heading_titleIcon"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading_title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "card-title-description",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "hidden": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_title",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_description",
+        "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
+  },
+  {
+    "id": "claims-process",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "claimsHeading",
+        "value": "",
+        "label": "Claims heading"
+      }
+    ]
+  },
+  {
+    "id": "claims-process-option",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "claimOptionName",
+        "value": "",
+        "label": "Name"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "claimOptionIcon",
+        "options": [
+          {
+            "name": "Calculator",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Call",
+            "value": ":call-white:"
+          },
+          {
+            "name": "Chevron down",
+            "value": ":chevron-down-white:"
+          },
+          {
+            "name": "Compare",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Email",
+            "value": ":email-white:"
+          },
+          {
+            "name": "Hamburger",
+            "value": ":hamburger-white:"
+          },
+          {
+            "name": "Online",
+            "value": ":online-white:"
+          },
+          {
+            "name": "Phone",
+            "value": ":phone-white:"
+          },
+          {
+            "name": "Question Fill",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Search",
+            "value": ":search-white:"
+          }
+        ],
+        "label": "Icon"
+      },
+      {
+        "component": "richtext",
+        "name": "contentSection1",
+        "label": "Content Section 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "contentSection2",
+        "label": "Content Section 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "contentSection3",
+        "label": "Content Section 3",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "faq",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "summary",
+        "value": "",
+        "label": "Summary"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "faq_anchor_link",
+        "value": "",
+        "label": "Anchor Link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Options",
+        "valueType": "string",
+        "required": true,
+        "maxSize": 4,
+        "options": [
+          {
+            "name": "Buttons Style",
+            "children": [
+              {
+                "name": "Stack",
+                "value": "buttons-stack"
+              },
+              {
+                "name": "Tabs",
+                "value": "tabs"
+              }
+            ]
+          },
+          {
+            "name": "Variant",
+            "children": [
+              {
+                "name": "Text Coverage",
+                "value": "coverage"
+              },
+              {
+                "name": "Image Coverage",
+                "value": "imagecoverage"
+              }
+            ]
+          },
+          {
+            "name": "Font Color",
+            "children": [
+              {
+                "name": "White",
+                "value": "font-white"
+              }
+            ]
+          },
+          {
+            "name": "Background",
+            "children": [
+              {
+                "name": "Gradient",
+                "value": "background-gradient"
+              }
+            ]
+          },
+          {
+            "name": "Content Border",
+            "children": [
+              {
+                "name": "Orange",
+                "value": "left-border-orange"
+              },
+              {
+                "name": "White",
+                "value": "left-border-white"
+              }
+            ]
+          },
+          {
+            "name": "Banner Height",
+            "children": [
+              {
+                "name": "Small",
+                "value": "height-small"
+              },
+              {
+                "name": "Scale with Width",
+                "value": "height-scale-vw"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "active-button",
+        "label": "Active Button",
+        "value": "1",
+        "condition": {
+          "in": [
+            "tabs",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "content_image_mobile",
+        "label": "Image Mobile",
+        "multi": false,
+        "condition": {
+          "!": {
+            "or": [
+              {
+                "in": [
+                  "tabs",
+                  {
+                    "var": "classes"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "buttons-stack",
+                  {
+                    "var": "classes"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "imagecoverage",
+                  {
+                    "var": "classes"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "content_image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "header_icon1",
+        "label": "Title Icon 1",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "header_icon2",
+        "label": "Title Icon 2",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "header_title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "header_subtitle",
+        "value": "",
+        "label": "Sub Title",
+        "valueType": "string",
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "coverage",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "discount_one_icon",
+        "label": "Discount Icon 1",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "discount_one_description",
+        "value": "",
+        "label": "Discount Description 1",
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "discount_two_icon",
+        "label": "Discount Icon 2",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "discount_two_description",
+        "value": "",
+        "label": "Discount Description 2",
+        "condition": {
+          "in": [
+            "coverage",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Button 1"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button1_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "buttons-stack",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button1_text",
+        "value": "",
+        "label": "Text",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "buttons-stack",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Button 2"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button2_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "buttons-stack",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button2_text",
+        "value": "",
+        "label": "Text",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "buttons-stack",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab3",
+        "label": "Button 3"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button3_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "buttons-stack",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button3_text",
+        "value": "",
+        "label": "Text",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "buttons-stack",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab4",
+        "label": "Button 4"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button4_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "buttons-stack",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button4_text",
+        "value": "",
+        "label": "Text",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "buttons-stack",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab5",
+        "label": "Button 5"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "button5_icon",
+        "label": "Icon",
+        "options": [
+          {
+            "name": "No Icon",
+            "value": ""
+          },
+          {
+            "name": "Calculator (white)",
+            "value": ":calculator-white:"
+          },
+          {
+            "name": "Compare (white)",
+            "value": ":compare-white:"
+          },
+          {
+            "name": "Document (white)",
+            "value": ":document-white:"
+          },
+          {
+            "name": "Download (white)",
+            "value": ":download-white:"
+          },
+          {
+            "name": "Friends (grey)",
+            "value": ":friends-grey:"
+          },
+          {
+            "name": "Friends (teal)",
+            "value": ":friends-teal:"
+          },
+          {
+            "name": "House fire (grey)",
+            "value": ":house-fire-grey:"
+          },
+          {
+            "name": "House fire (teal)",
+            "value": ":house-fire-teal:"
+          },
+          {
+            "name": "Beach Ball (grey)",
+            "value": ":beach-ball-grey:"
+          },
+          {
+            "name": "Beach Ball (teal)",
+            "value": ":beach-ball-teal:"
+          },
+          {
+            "name": "Ten percent (indigo)",
+            "value": ":ten-percent-indigo:"
+          },
+          {
+            "name": "Five percent (green)",
+            "value": ":five-percent-green:"
+          }
+        ],
+        "condition": {
+          "in": [
+            "buttons-stack",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "button5_text",
+        "value": "",
+        "label": "Text",
+        "condition": {
+          "some": [
+            {
+              "var": "classes"
+            },
+            {
+              "in": [
+                {
+                  "var": ""
+                },
+                [
+                  "buttons-stack",
+                  "tabs"
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "image-with-link",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileimage",
+        "label": "Mobile Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imagelink",
+        "label": "Image Link",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "landing-ctas",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "CTA 1"
+      },
+      {
+        "component": "text",
+        "name": "button1_text",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "button1_link",
+        "label": "Link"
+      },
+      {
+        "component": "select",
+        "name": "button1_type",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "CTA 2"
+      },
+      {
+        "component": "text",
+        "name": "button2_text",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "button2_link",
+        "label": "Link"
+      },
+      {
+        "component": "select",
+        "name": "button2_type",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "notification-banner",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "notificationText",
+        "label": "Notification Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "notificationLink",
+        "label": "Notification Button URL",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "notificationLinkText",
+        "label": "Notification Button Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "page-title",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "name": "add-dropdown",
+        "label": "Add dropdown",
+        "value": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dropdownTitle",
+        "label": "Dropdown Title",
+        "value": "",
+        "condition": {
+          "===": [
+            {
+              "var": "add-dropdown"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "dropdownList",
+        "value": "",
+        "label": "Dropdown list",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "add-dropdown"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "policy-documents",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category1name",
+        "value": "",
+        "label": "Category 1 Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category2name",
+        "value": "",
+        "label": "Category 2 Name"
+      }
+    ]
+  },
+  {
+    "id": "policy-document-group",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "documentType",
+        "value": "",
+        "label": "Document Type"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "documentTypeDescription",
+        "value": "",
+        "label": "Document Type Description"
+      },
+      {
+        "component": "boolean",
+        "name": "showDescription",
+        "label": "Show description on filter button",
+        "valueType": "boolean"
+      },
+      {
+        "component": "richtext",
+        "name": "category1Documents",
+        "label": "Category 1 Documents",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "category2Documents",
+        "label": "Category 2 Documents",
+        "valueType": "string",
+        "description": "Leave blank to prevent category filtering"
+      }
+    ]
+  },
+  {
+    "id": "related-articles",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Related Articles"
+      }
+    ]
+  },
+  {
+    "id": "related-article",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "articleFragment",
+        "label": "Article Path",
+        "multi": false
+      }
+    ]
+  },
+  {
+    "id": "ribbon",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "ribbonText",
+        "label": "Text"
+      }
+    ]
+  },
+  {
+    "id": "rich-text",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "rich-text-content",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "alignment",
+        "label": "Align Content",
+        "options": [
+          {
+            "name": "Left",
+            "value": "left-aligned"
+          },
+          {
+            "name": "Center",
+            "value": "center-aligned"
+          },
+          {
+            "name": "Right",
+            "value": "right-aligned"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "text-color",
+        "label": "Color",
+        "options": [
+          {
+            "name": "h1 black",
+            "value": "h1-black"
+          },
+          {
+            "name": "h2 black",
+            "value": "h2-black"
+          },
+          {
+            "name": "h3 black",
+            "value": "h3-black"
+          },
+          {
+            "name": "h4 black",
+            "value": "h4-black"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "text_font",
+        "label": "Font",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default-font"
+          },
+          {
+            "name": "Big",
+            "value": "big-font"
+          },
+          {
+            "name": "Small",
+            "value": "small-font"
+          },
+          {
+            "name": "Thin",
+            "value": "thin-font"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "list_style",
+        "label": "List Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Check",
+            "value": ":icon-tick:"
+          },
+          {
+            "name": "Arrow",
+            "value": ":arrow-bullet-teal:"
+          },
+          {
+            "name": "Exclamation",
+            "value": ":icon-exclamation:"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "background_color",
+        "label": "Background Color",
+        "options": [
+          {
+            "name": "Default",
+            "value": "default-color"
+          },
+          {
+            "name": "Teal",
+            "value": "backgroundcolor-teal"
+          },
+          {
+            "name": "Teal Mid Light",
+            "value": "backgroundcolor-teal-mid-light"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "miscellaneous",
+        "label": "Others",
+        "options": [
+          {
+            "name": "Bottom Border",
+            "value": "bottom-border"
+          },
+          {
+            "name": "Left padding",
+            "value": "left-padding"
+          },
+          {
+            "name": "CTA Button",
+            "value": "cta-button"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "styled-lists",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "bulletIcon",
+        "label": "Bullet Icon",
+        "options": [
+          {
+            "name": "Chevron",
+            "value": ":chevron-right-teal:"
+          },
+          {
+            "name": "Check",
+            "value": ":check-teal:"
+          },
+          {
+            "name": "Check (dark)",
+            "value": ":check-dark:"
+          },
+          {
+            "name": "Plus",
+            "value": ":plus-teal:"
+          },
+          {
+            "name": "Triangle",
+            "value": ":triangle-right-teal:"
+          },
+          {
+            "name": "Exclamation",
+            "value": ":exclamation-teal:"
+          },
+          {
+            "name": "Question",
+            "value": ":question-teal:"
+          }
+        ],
+        "required": true
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "showMoreThreshold",
+        "label": "Max list items to show",
+        "value": "0",
+        "description": "Set to 0 to show all items"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "footnote",
+        "value": "",
+        "label": "Footnote"
+      },
+      {
+        "component": "boolean",
+        "label": "Light teal background",
+        "name": "lightTealBackground",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "styled-list-column",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "styledListContent",
+        "label": "Content"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Table List",
+            "children": [
+              {
+                "name": "Default",
+                "value": "list"
+              },
+              {
+                "name": "Add Description",
+                "value": "description"
+              }
+            ]
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Heading",
+                "value": "heading-bg"
+              },
+              {
+                "name": "Body",
+                "value": "body-bg"
+              },
+              {
+                "name": "Alternate Row",
+                "value": "alternate-row-bg"
+              }
+            ]
+          },
+          {
+            "name": "Border",
+            "children": [
+              {
+                "name": "Striped",
+                "value": "striped"
+              },
+              {
+                "name": "Bordered",
+                "value": "bordered"
+              }
+            ]
+          },
+          {
+            "name": "Header",
+            "children": [
+              {
+                "name": "No Header",
+                "value": "no-header"
+              },
+              {
+                "name": "Large Header",
+                "value": "large-header"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "filter",
+        "label": "Columns",
+        "valueType": "string",
+        "value": "table",
+        "options": [
+          {
+            "name": "1 Column",
+            "value": "table"
+          },
+          {
+            "name": "2 Columns",
+            "value": "table-2-columns"
+          },
+          {
+            "name": "3 Columns",
+            "value": "table-3-columns"
+          },
+          {
+            "name": "4 Columns",
+            "value": "table-4-columns"
+          },
+          {
+            "name": "5 Columns",
+            "value": "table-5-columns"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "headingBgColor",
+        "label": "Heading Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "heading-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "bodyBgColor",
+        "label": "Body Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "body-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "alternateRowBgColor",
+        "label": "Alternate Row Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "alternate-row-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "listItemHeading",
+        "label": "Table List Title",
+        "condition": {
+          "in": [
+            "list",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Table List Description",
+        "condition": {
+          "in": [
+            "description",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-row",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column1_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column1_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column1_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column1_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column1_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column1_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-col-2",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column1_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column1_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column1_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column1_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column1_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column1_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column2_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column2_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column2_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column2_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column2_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column2_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-col-3",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column1_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column1_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column1_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column1_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column1_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column1_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column2_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column2_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column2_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column2_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column2_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column2_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab3",
+        "label": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column3_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column3_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column3_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column3_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column3_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column3_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-col-4",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column1_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column1_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column1_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column1_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column1_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column1_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column2_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column2_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column2_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column2_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column2_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column2_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab3",
+        "label": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column3_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column3_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column3_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column3_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column3_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column3_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab4",
+        "label": "Column 4"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column4_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column4_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column4_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column4_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column4_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column4_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column4_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column4_buttonFlag"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-col-5",
+    "fields": [
+      {
+        "component": "tab",
+        "name": "tab1",
+        "label": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column1_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column1_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column1_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column1_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column1_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column1_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column1_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab2",
+        "label": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column2_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column2_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column2_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column2_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column2_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column2_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column2_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab3",
+        "label": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column3_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column3_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column3_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column3_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column3_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column3_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column3_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab4",
+        "label": "Column 4"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column4_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column4_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column4_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column4_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column4_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column4_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column4_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column4_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "tab",
+        "name": "tab5",
+        "label": "Column 5"
+      },
+      {
+        "component": "select",
+        "label": "Icon",
+        "name": "column5_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column5_text",
+        "valueType": "string",
+        "value": "Column 5"
+      },
+      {
+        "component": "select",
+        "label": "Tooltip Icon",
+        "name": "column5_tooltip_icon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Heading Tooltip (white)",
+            "value": ":question-fill-white:"
+          },
+          {
+            "name": "Ten Percent Large (indigo)",
+            "value": ":ten-percent-indigo-large:"
+          },
+          {
+            "name": "Body Tooltip (teal)",
+            "value": ":question-teal:"
+          },
+          {
+            "name": "Check (teal)",
+            "value": ":check-teal:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "label": "Tooltip Text",
+        "name": "column5_tooltip_text",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Add button",
+        "name": "column5_buttonFlag",
+        "value": false
+      },
+      {
+        "component": "richtext",
+        "label": "Button(Add text and link)",
+        "name": "column5_button",
+        "valueType": "string",
+        "condition": {
+          "===": [
+            {
+              "var": "column5_buttonFlag"
+            },
+            true
+          ]
+        }
+      },
+      {
+        "component": "select",
+        "label": "Button Style",
+        "name": "column5_buttonStyle",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Orange",
+            "value": "orange"
+          }
+        ],
+        "condition": {
+          "===": [
+            {
+              "var": "column5_buttonFlag"
+            },
+            true
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tabs-with-comments",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "quotes",
+        "label": "Quotes",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tabs-with-comments-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "title",
+        "label": "Tab Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "textandbox",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "label": "Box Title Icon",
+        "name": "box_titleIcon",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Ten Percent Indigo Large",
+            "value": ":ten-percent-indigo-large:"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "box_title",
+        "label": "Box Title"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "boxtext",
+        "label": "Box Text"
+      }
+    ]
+  },
+  {
+    "id": "text-image",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "content_imageMob",
+        "label": "Image Mobile",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_imageMobAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "content_imageDesk",
+        "label": "Image Desktop",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_imageDeskAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "content_text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "video",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "uri",
+        "label": "Video"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Auto Play",
+            "children": [
+              {
+                "name": "AutoPlay",
+                "value": "autoplay"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "placeholder_image",
+        "label": "Placeholder Image"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "placeholder_imageAlt",
+        "value": "",
+        "label": "Placeholder Image Alt Text"
+      }
+    ]
+  }
+]
