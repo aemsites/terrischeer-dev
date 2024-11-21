@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: "author-p139617-e1446464.adobeaemcloud.com//bin/franklin.delivery/aemsites/terrischeer-dev/main"
+    url: "author-p139617-e1446293.adobeaemcloud.com//bin/franklin.delivery/aemsites/terrischeer-dev/main"
     type: "markup"
     suffix: ".html"
 
