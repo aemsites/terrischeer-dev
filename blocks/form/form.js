@@ -9,7 +9,7 @@ import {
 import GoogleReCaptcha from './integrations/recaptcha.js';
 import componentDecorator from './mappings.js';
 import DocBasedFormToAF from './transform.js';
-import transferRepeatableDOM from './components/repeat/repeat.js';
+import transferRepeatableDOM, { insertAddButton, insertRemoveButton } from './components/repeat/repeat.js';
 import { handleSubmit } from './submit.js';
 import { getSubmitBaseUrl, emailPattern } from './constant.js';
 
@@ -152,6 +152,22 @@ function createLegend(fd) {
   return createLabel(fd, 'legend');
 }
 
+function createRepetablePanel(wrapper, fd) {
+  setConstraints(wrapper, fd);
+  wrapper.dataset.repeatable = true;
+  wrapper.dataset.index = fd.index || 0;
+  if (fd.properties) {
+    Object.keys(fd.properties).forEach((key) => {
+      if (!key.startsWith('fd:')) {
+        wrapper.dataset[key] = fd.properties[key];
+      }
+    });
+  }
+  if (!fd.index || fd?.index === 0) {
+    insertAddButton(wrapper, wrapper);
+    insertRemoveButton(wrapper, wrapper);
+  }
+}
 function createFieldSet(fd) {
   const wrapper = createFieldWrapper(fd, 'fieldset', createLegend);
   wrapper.id = fd.id;
@@ -160,9 +176,7 @@ function createFieldSet(fd) {
     wrapper.classList.add('panel-wrapper');
   }
   if (fd.repeatable === true) {
-    setConstraints(wrapper, fd);
-    wrapper.dataset.repeatable = true;
-    wrapper.dataset.index = fd.index || 0;
+    createRepetablePanel(wrapper, fd);
   }
   return wrapper;
 }
@@ -504,6 +518,7 @@ export async function fetchForm(pathname) {
         }
         return doc;
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error('Unable to fetch form definition for path', pathname, path);
         return null;
       }

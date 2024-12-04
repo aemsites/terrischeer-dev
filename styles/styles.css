@@ -296,6 +296,7 @@ main button:focus {
 }
 
 /* orange button */
+main .form button[type='submit'],
 main a.button.orange,
 main button.orange,
 main a.button.primary,
@@ -306,6 +307,8 @@ main button.primary {
   background: linear-gradient(var(--orange-btn-light), var(--orange-btn));
 }
 
+main .form button[type='submit']:hover,
+main .form button[type='submit']:focus,
 main a.button.orange:any-link:hover,
 main a.button.orange:any-link:focus,
 main a.button.primary:any-link:hover,

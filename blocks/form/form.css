@@ -257,6 +257,10 @@ input::file-selector-button {
 }
 
 main .form button {
+    padding: 6px 20px;
+}
+
+/* main .form button {
     color: var(--form-button-color);
     background: var(--form-button-background-color);
     border: var(--form-button-border);
@@ -272,7 +276,7 @@ main form .file-wrapper > button{
 
 main .form button:hover {
     background: var(--form-button-background-hover-color);
-}
+} */
 
 main .submit-wrapper{
     width: var(--form-submit-width);
@@ -298,18 +302,31 @@ main .file-wrapper .field-dropregion {
     text-align: center;
 }
 
-main .form form .item-remove {
-    padding: 0;
-    background: #fff;
-    padding-left: 10px;
+/* Repeatable Styling */
+
+main .form form .repeat-actions {
+    grid-column: span 12;
 }
 
+main .form form .item-remove,
 main .form form .item-add {
     overflow: unset;
-    display: flex;
-    justify-content: center;
+    display: none;
 }
 
+main .form form .item-remove {
+    justify-self: end;
+    grid-column: span 12;
+}
+main .form form div[data-variant="addRemoveAll"] .item-add,
+main .form form div[data-variant="addRemoveLast"] .item-add,
+main .form form div[data-variant="addRemoveAll"] .item-remove, 
+main .form form div[data-variant="addRemoveLast"] fieldset:last-of-type .item-remove {
+    display: block;
+
+}
+
+/* End of Repeatable Styling */
 main .form .file-description{
   display: flex;
   gap: 20px;
@@ -321,13 +338,6 @@ main .form .file-description .file-description-name {
   cursor: pointer;
   text-decoration: underline;
   flex: 1;
-}
-
-main .form form .item-remove span {
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: url('../../icons/delete.svg') no-repeat;
 }
 
 main .file-wrapper .file-description button {

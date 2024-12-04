@@ -113,6 +113,7 @@ function registerFunctions(functions) {
     }
 
     if (!Object.prototype.hasOwnProperty.call(finalFunction, '_func')) {
+      // eslint-disable-next-line no-console
       console.warn(`Unable to register function with name ${name}.`);
     } else {
       functionsMap[name?.toLowerCase()] = finalFunction;

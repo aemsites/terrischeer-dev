@@ -152,12 +152,15 @@ function annotateItems(items, formDefinition, formFieldMap) {
             fieldWrapper.setAttribute('data-aue-label', fd.label?.value || fd.name);
           }
         } else {
+          // eslint-disable-next-line no-console
           console.warn(`field ${id} not found in form definition`);
         }
       }
     }
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error while annotating form elements', error);
+    // eslint-disable-next-line no-alert
     window.alert('Error while annotating form elements');
   }
 }
