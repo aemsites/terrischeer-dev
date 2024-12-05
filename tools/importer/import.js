@@ -55,15 +55,16 @@ const createSectionMetadata = (style, metadata) => {
   }
 
   if (metadata) {
-    for (const key in metadata) {
+    Object.keys(metadata).forEach((key) => {
       const keyDiv = document.createElement('div');
       keyDiv.textContent = key;
+
       const valueDiv = document.createElement('div');
       valueDiv.textContent = metadata[key];
 
       const row = [keyDiv, valueDiv];
       cells.push(row);
-    }
+    });
   }
 
   const block = WebImporter.DOMUtils.createTable(cells, document);
@@ -130,13 +131,29 @@ const adjustSup = (element) => {
   const sup = element.querySelector('sup');
   const span = element.querySelector("span[id^='mfn-content']");
   if (sup && span) {
-    const innerLink = sup.querySelector('a');
     const link = span.querySelector('a');
-    link.textContent = innerLink.textContent;
-    innerLink.remove();
+    const linkSup = document.createElement('sup');
+    linkSup.textContent = link.textContent;
+    link.title = link.textContent;
+    link.textContent = '';
+    link.appendChild(linkSup);
+    element.appendChild(link);
     span.remove();
-    sup.appendChild(link);
+    sup.remove();
   }
+};
+
+const createFragment = (path) => {
+  const cells = [
+    ['Fragment'],
+  ];
+
+  const pathDiv = document.createElement('div');
+  pathDiv.textContent = path;
+  cells.push([pathDiv]);
+
+  const fragment = WebImporter.DOMUtils.createTable(cells, document);
+  return fragment;
 };
 
 const parseDefaultContent = (main, document) => {
@@ -161,7 +178,7 @@ const parseDefaultContent = (main, document) => {
       const videoUrl = element.querySelector('iframe').src;
       const parts = videoUrl.split('/');
       const videoId = parts[parts.length - 1];
-      const watchUrl = 'https://www.youtube.com/watch?v=' + videoId.slice(0, -1);
+      const watchUrl = `https://www.youtube.com/watch?v=${videoId.slice(0, -1)}`;
       main.appendChild(createVideo(watchUrl));
     } else if (element.tagName === 'H2'
       || element.tagName === 'H3'
@@ -187,31 +204,20 @@ const parseDefaultContent = (main, document) => {
         div = document.createElement('div');
         flags = {};
         return true;
-      } else {
-        // adjustSup(element);
-        adjustLinks(element);
-        div.appendChild(element);
       }
+
+      adjustSup(element);
+      adjustLinks(element);
+      div.appendChild(element);
     }
+    return false;
   });
   if (div.children.length > 0) {
     main.appendChild(createRichText(document, div, flags));
   }
 };
 
-const createFragment = (path) => {
-  const cells = [
-    ['Fragment'],
-  ];
-
-  const pathDiv = document.createElement('div');
-  pathDiv.textContent = path;
-  cells.push([pathDiv]);
-
-  const fragment = WebImporter.DOMUtils.createTable(cells, document);
-  return fragment;
-};
-
+/* global WebImporter */
 export default {
   /**
    * Apply DOM operations to the provided document and return

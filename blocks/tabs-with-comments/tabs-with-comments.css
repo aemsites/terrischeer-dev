@@ -18,6 +18,10 @@
     padding: 0;
 }
 
+.tabs-with-comments ol ol {
+    list-style: none;
+}
+
 .tabs-with-comments .tabs-comments p,
 .tabs-with-comments .tabs-comments a,
 .tabs-with-comments .tabs-comments ul,
@@ -58,10 +62,6 @@
     border-right: 0.25rem solid transparent;
     border-left: 0.25rem solid transparent;
     border-bottom: 0 dotted;
-}
-
-.tabs-with-comments ol ol {
-    list-style: none;
 }
 
 .tabs-with-comments div > ol:first-of-type {
