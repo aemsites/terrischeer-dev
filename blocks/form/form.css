@@ -148,15 +148,34 @@ main .form select {
     border-radius: 0;
 }
 
+main .form textarea {
+    min-height: 100px;
+}
+
+main .form select {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+main .form input:hover, main .form select:hover {
+    border-color: rgb(90 92 96);
+}
+
+main .form button {
+    padding: 6px 20px;
+}
+
+main .form input:disabled,
+main .form textarea:disabled,
+main .form select:disabled,
+main .form button:disabled {
+    background-color: var(--form-input-disable-color);
+}
+
 main .form .field-wrapper input:focus,
 main .form .field-wrapper textarea:focus {
     border: var(--form-input-border-size) solid var(--teal);
     outline: none;
-}
-
-main .form select {
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 main .form input[type='file'] {
@@ -174,14 +193,6 @@ main .form input[type='radio'] {
     margin: 0;
     position: static;
     z-index: 1;
-}
-
-main .form textarea {
-    min-height: 100px;
-}
-
-main .form input:hover, main .form select:hover {
-    border-color: rgb(90 92 96);
 }
 
 main .form fieldset legend {
@@ -214,6 +225,20 @@ main .form form .field-wrapper {
     grid-column: span 12;
 }
 
+main .form .radio-wrapper  label,
+main .form .checkbox-wrapper label {
+    flex-basis: calc(100% - 28px);
+}
+
+main .form form .wizard > legend{
+    float: left;
+    width: 100%;
+}
+
+main .form form .wizard > fieldset > legend{
+    display: none;
+}
+
 main .form form .field-wrapper.field-invalid legend,
 main .form form .field-wrapper.field-invalid > label{
     color: var(--form-error-color);
@@ -244,20 +269,11 @@ main .form form fieldset > .checkbox-wrapper:first-of-type {
     margin: var(--form-field-gap);
 }
 
-main .form .radio-wrapper  label,
-main .form .checkbox-wrapper label {
-    flex-basis: calc(100% - 28px);
-}
-
 input::file-selector-button {
     color: var(--form-upload-color);
     background: var(--form-upload-background-color);
     font-size: var(--form-upload-font-size);
     text-align: center;
-}
-
-main .form button {
-    padding: 6px 20px;
 }
 
 /* main .form button {
@@ -280,13 +296,6 @@ main .form button:hover {
 
 main .submit-wrapper{
     width: var(--form-submit-width);
-}
-
-main .form input:disabled,
-main .form textarea:disabled,
-main .form select:disabled,
-main .form button:disabled {
-    background-color: var(--form-input-disable-color);
 }
 
 main .file-wrapper.decorated input[type="file"] {
@@ -318,9 +327,10 @@ main .form form .item-remove {
     justify-self: end;
     grid-column: span 12;
 }
+
 main .form form div[data-variant="addRemoveAll"] .item-add,
 main .form form div[data-variant="addRemoveLast"] .item-add,
-main .form form div[data-variant="addRemoveAll"] .item-remove, 
+main .form form div[data-variant="addRemoveAll"] .item-remove,
 main .form form div[data-variant="addRemoveLast"] fieldset:last-of-type .item-remove {
     display: block;
 
@@ -393,17 +403,8 @@ main .form form .wizard  {
   padding: 20px var(--form-wizard-padding);
 }
 
-main .form form .wizard > legend{
-    float: left;
-    width: 100%;
-}
-
 main .form form .wizard > .field-description{
   width: 100%;
-}
-
-main .form form .wizard > fieldset > legend{
-    display: none;
 }
 
 main .form form .wizard > fieldset:not(.current-wizard-step){
@@ -619,6 +620,7 @@ main .form .field-wrapper.field-invalid .field-description::before {
     content:'* ';
 }
 
+/* stylelint-disable */
 main .form .gform_title {
     color: var(--teal);
 }
