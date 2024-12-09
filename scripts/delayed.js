@@ -10,6 +10,8 @@ import {
 sampleRUM('cwv');
 
 const BV_SCRIPT = 'https://display.ugc.bazaarvoice.com/bvstaging/static/terrischeer/en_AU/bvapi.js';
+const BOOTSTRAP_STAGE_SCRIPT = 'https://assets1.terrischeer.com.au/suncorp/ts-bw-stage/Bootstrap.js';
+const BOOTSTRAP_PROD_SCRIPT = 'https://assets1.terrischeer.com.au/suncorp/ts-bw-prod/Bootstrap.js';
 
 async function loadBazaarVoice() {
   const main = document.querySelector('body > main');
@@ -29,4 +31,12 @@ async function loadBazaarVoice() {
   return Promise.resolve('BV Scripts loaded!!');
 }
 
+async function loadBootstrap() {
+  let scriptSrc = BOOTSTRAP_PROD_SCRIPT;
+  const envType = getEnvType();
+  scriptSrc = (envType === 'prod' || envType === 'live') ? BOOTSTRAP_PROD_SCRIPT : BOOTSTRAP_STAGE_SCRIPT;
+  await loadScript(scriptSrc);
+}
+
+loadBootstrap();
 loadBazaarVoice();
