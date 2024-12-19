@@ -205,18 +205,23 @@ function decorateTitleDescriptionVariant(titleDescCard) {
   const [content, url] = titleDescCard.children;
   const [title, desc] = content?.children || [];
   const link = url?.querySelector('a')?.href || '';
-  const a = document.createElement('a');
   if (!title && !desc) return;
-  a.href = link;
+  let el;
+  if (link !== '') {
+    el = document.createElement('a');
+    el.href = link;
+  } else {
+    el = document.createElement('div');
+  }
   url?.remove();
-  a.append(content);
+  el.append(content);
 
-  a.classList.add(...titleDescCard.classList.values());
+  el.classList.add(...titleDescCard.classList.values());
   title?.classList?.add('title-d');
   desc?.classList?.add('description');
 
-  moveInstrumentation(titleDescCard, a);
-  titleDescCard.replaceWith(a);
+  moveInstrumentation(titleDescCard, el);
+  titleDescCard.replaceWith(el);
 }
 
 export default function decorate(block) {

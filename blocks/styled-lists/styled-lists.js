@@ -1,3 +1,5 @@
+import { enableAdaptiveTooltip } from '../../scripts/blocks-utils.js';
+
 const SHOW_MORE_ICON = `${window.hlx.codeBasePath}/icons/arrow-circle-teal.svg`;
 const TOOLTIP_ICON = `${window.hlx.codeBasePath}/icons/question-teal.svg`;
 
@@ -41,6 +43,8 @@ function handleTooltips(list) {
     tooltipIcon.setAttribute('src', TOOLTIP_ICON);
     tooltipIcon.setAttribute('alt', 'Tooltip');
     tooltip.append(tooltipIcon);
+
+    enableAdaptiveTooltip(tooltip);
   });
 }
 
@@ -53,17 +57,6 @@ export default function decorate(block) {
     listItem.style.background = `url(${iconSrc}) left center no-repeat`;
     listItem.style.backgroundSize = '1.25rem';
     listItem.style.paddingInlineStart = '1.8rem';
-  });
-  block.querySelector('.styled-lists > div:first-child')?.remove();
-
-  // Tooltips & show more button
-  const showMoreThreshold = block.querySelector('.styled-lists > div:first-child p')?.textContent;
-  const lists = block.querySelectorAll('ul');
-  lists.forEach((list) => {
-    handleTooltips(list);
-    if (showMoreThreshold > 0 && list.children.length > showMoreThreshold) {
-      handleShowMoreFunctionality(list, showMoreThreshold);
-    }
   });
   block.querySelector('.styled-lists > div:first-child')?.remove();
 
@@ -86,6 +79,17 @@ export default function decorate(block) {
   const listCols = document.createElement('div');
   listCols.classList.add('list-columns');
   block.querySelectorAll('.styled-lists > div:not(.footnote').forEach((col) => {
+    // Tooltips & show more button
+    col.querySelector('div:first-child').classList.add('column-content');
+    const showMoreThreshold = col.querySelector(':scope > div:not(.column-content) > p')?.textContent;
+    const lists = col.querySelectorAll('ul');
+    lists.forEach((list) => {
+      handleTooltips(list);
+      if (showMoreThreshold && showMoreThreshold > 0 && list.children.length > showMoreThreshold) {
+        handleShowMoreFunctionality(list, showMoreThreshold);
+      }
+    });
+    col.querySelector(':scope > div:not(.column-content)')?.remove();
     listCols.append(col);
   });
   block.prepend(listCols);

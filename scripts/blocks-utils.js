@@ -44,21 +44,6 @@ function closeSearchBar() {
 }
 
 /**
- * Add click listener to open external link in a new window
- * @param link
- */
-function addGenericLinkClickListener(link) {
-  link.addEventListener('click', (event) => {
-    const url = link.href;
-    const isExternal = url.startsWith('http') && !url.includes(window.location.hostname);
-    if (isExternal) {
-      event.preventDefault();
-      window.open(`${url}`, '_blank');
-    }
-  });
-}
-
-/**
  * Generate BV review stars markup.
  * @param aHref the link of star
  */
@@ -178,9 +163,63 @@ async function fetchBVOverviewRatingComment(productId) {
   return apiData.Results;
 }
 
-function addBazaarVoiceReviewsScript() {
-  const main = document.querySelector('main');
-  const bvReviewsBlocks = Array.from(main.querySelectorAll('.block.bv-reviews'));
+/**
+ * Updates BV overview rating UI
+ * @param main
+ */
+function updateBazaarVoiceRatingBlock(main) {
+  try {
+    const block = main.querySelector('.block.bv-overview-rating');
+    if (!block) return;
+
+    const productId = block.getAttribute('data-product-id');
+    if (!productId) throw new Error('Product ID not found in BV overview rating block.');
+
+    const ratingContent = block.querySelector('.ts-bv-overview-rating');
+    if (!ratingContent) throw new Error('Rating content not found in BV overview rating block.');
+
+    fetchBVOverviewRating(productId)
+      .then((ratingResults) => {
+        if (ratingResults) {
+          const overallRating = ratingResults.AverageOverallRating;
+          const totalReviewCount = ratingResults.TotalReviewCount;
+          const rating = ratingContent.querySelector('.ts-bv-filled-star');
+          const starWidth = (overallRating * 100) / 5;
+          rating.style.width = `${starWidth}%`;
+          const reviews = ratingContent.querySelector('.ts-bv-overview-rating-review-number');
+          reviews.textContent = ` ${totalReviewCount} `;
+        }
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching or updating BV overview rating:', error);
+      });
+    fetchBVOverviewRatingComment(productId)
+      .then((commentResults) => {
+        if (commentResults && commentResults.length > 0) {
+          const randomItem = commentResults[Math.floor(Math.random() * commentResults.length)];
+          const userComment = randomItem.Title;
+          const userName = randomItem.UserNickname;
+          const comment = ratingContent.querySelector('.ts-bv-overview-rating-comment');
+          comment.textContent = `"${userComment}" ${userName}`;
+        }
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching or updating BV overview comments:', error);
+      });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error updating BV overview rating block:', error);
+  }
+}
+
+/**
+ * Add required script to show BV reviews
+ * @param bvReviewsBlocks bazaarvoice-integration block with type = 'BV Reviews'
+ */
+function addBazaarVoiceReviewsScript(bvReviewsBlocks) {
+  if (!bvReviewsBlocks) return;
   bvReviewsBlocks.forEach((block) => {
     const productId = block.getAttribute('data-product-id');
     const script = document.createElement('script');
@@ -192,6 +231,22 @@ function addBazaarVoiceReviewsScript() {
           // If the container is hidden (such as behind a tab), put code here to make it visible
         }
       });
+    `;
+    block.appendChild(script);
+  });
+}
+
+/**
+ * Add required script to show BV submission form
+ * @param bvSubmissionFormBlocks bazaarvoice-integration block with type = 'BV Submission Form'
+ */
+function addBazaarVoiceFormSubmissionScript(bvSubmissionFormBlocks) {
+  if (!bvSubmissionFormBlocks) return;
+  bvSubmissionFormBlocks.forEach((block) => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.text = `
+      $BV.container('global', {});
     `;
     block.appendChild(script);
   });
@@ -230,16 +285,39 @@ function generateSuperScripts(main) {
   });
 }
 
+function enableAdaptiveTooltip(tooltip) {
+  ['mouseover', 'focus'].forEach((evt) => {
+    tooltip.addEventListener(evt, () => {
+      // Reset any previous position adjustment
+      tooltip.querySelector(':scope .tooltip-content').style.marginLeft = '';
+      tooltip.classList.remove('tooltip-left');
+      tooltip.classList.remove('tooltip-bottom');
+
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const spaceRight = window.innerWidth - tooltipRect.left + tooltipRect.width;
+      const spaceLeft = tooltipRect.left;
+      const rightAdjustment = spaceLeft / 20;
+
+      if (spaceRight < 275 && spaceLeft < 275) {
+        tooltip.classList.add('tooltip-bottom');
+        tooltip.querySelector(':scope .tooltip-content').style.marginLeft = `-${rightAdjustment}rem`;
+      } else if (spaceRight < 275) {
+        tooltip.classList.add('tooltip-left');
+      }
+    });
+  });
+}
+
 export {
   createElement,
   openSearchBar,
   closeSearchBar,
-  addGenericLinkClickListener,
   generateBvStarMarkup,
   fetchBVProductRating,
-  fetchBVOverviewRating,
-  fetchBVOverviewRatingComment,
   getEnvType,
+  updateBazaarVoiceRatingBlock,
   addBazaarVoiceReviewsScript,
+  addBazaarVoiceFormSubmissionScript,
   generateSuperScripts,
+  enableAdaptiveTooltip,
 };

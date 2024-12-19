@@ -1,53 +1,53 @@
-// Function to create a dropdown
-function createDropdown(links, sections) {
-  const dropdown = document.createElement('select');
-  dropdown.className = 'dropdown-list';
-  links.forEach((button, index) => {
-    const option = document.createElement('option');
-    option.value = index; // Use index to track sections
-    option.textContent = button.textContent;
-    dropdown.appendChild(option);
-  });
-  dropdown.addEventListener('change', function handleChange() {
-    const selectedIndex = this.value;
-    // Hide all content sections
-    sections.forEach((section) => {
-      section.style.display = 'none';
-    });
-    // Show the selected content section
-    sections[selectedIndex].style.display = 'block';
-  });
-  return dropdown;
+import { buildBlock, decorateBlock, loadBlock } from '../../scripts/aem.js';
+
+const BREAKPOINTS = {
+  mobile: '(max-width: 767px)',
+  tablet: '(max-width: 991px)',
+  desktop: '(min-width: 992px)',
+};
+
+function isDesktop() {
+  return window.matchMedia(BREAKPOINTS.desktop).matches;
 }
 
-// Function to set the active link
-function setActiveLink(link) {
-  document.querySelectorAll('.custom-side-nav li').forEach((item) => {
+function setActiveLink(link, block) {
+  block.querySelectorAll('.custom-side-nav li').forEach((item) => {
     item.classList.remove('active');
   });
   link.parentElement.classList.add('active');
 }
 
-// Function to highlight the current link and display its content
-function highlightCurrentLink(sideNavList, sections) {
-  const activeLinkPath = localStorage.getItem('activeLinkPath');
-  const currentPath = window.location.pathname;
-
-  sideNavList.querySelectorAll('a').forEach((link) => {
-    if (link.href.endsWith(currentPath) || link.href.endsWith(activeLinkPath)) {
-      setActiveLink(link);
-
-      // Display the corresponding section
-      sections.forEach((section) => {
-        section.style.display = 'none';
-      });
-      sections[link.dataset.target].style.display = 'block';
-    }
+function handleTabSelection(link, sections, block) {
+  sections.forEach((section) => {
+    section.style.display = 'none';
   });
+  sections[link.dataset.target].style.display = 'block';
+  setActiveLink(link, block);
+  window.history.pushState(null, '', link.href);
+  localStorage.setItem('activeLinkPath', link.href);
 }
 
-// Function to create side navigation
-function createSideNavigation(links, sections) {
+function highlightCurrentLink(sideNavList, sections, block) {
+  const activeLinkPath = localStorage.getItem('activeLinkPath');
+  const currentPath = window.location.pathname;
+  sections.forEach((section) => {
+    section.style.display = 'none';
+  });
+  const links = Array.from(sideNavList.querySelectorAll('a'));
+  let activeLink = links
+    .find((link) => link.href.endsWith(currentPath) || link.href.endsWith(activeLinkPath));
+  if (activeLink) {
+    setActiveLink(activeLink, block);
+  } else {
+    // eslint-disable-next-line prefer-destructuring
+    activeLink = links[0];
+  }
+  sections[activeLink.dataset.target].style.display = 'block';
+  const dropDown = block.querySelector('.dropdown-list');
+  if (dropDown) dropDown.value = activeLink.getAttribute('data-target') || 0;
+}
+
+function createSideNavigation(links, sections, block) {
   const sideNav = document.createElement('nav');
   sideNav.className = 'custom-side-nav';
   const sideNavList = document.createElement('ul');
@@ -58,41 +58,34 @@ function createSideNavigation(links, sections) {
   links.forEach((button, index) => {
     const listItem = document.createElement('li');
     const link = document.createElement('a');
-    link.href = `${basePath}/${button.textContent.toLowerCase().replace(/\s+/g, '-')}`;
+    link.href = `${basePath}/${button.textContent
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, '-')}`;
     link.textContent = button.textContent;
     link.dataset.target = index;
     listItem.appendChild(link);
+
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      handleTabSelection(link, sections, block);
+    });
     sideNavList.appendChild(listItem);
   });
 
-  sideNavList.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      sections.forEach((section) => {
-        section.style.display = 'none';
-      });
-      sections[link.dataset.target].style.display = 'block';
-
-      window.history.pushState(null, '', link.href);
-      setActiveLink(link);
-      localStorage.setItem('activeLinkPath', link.href);
-    });
-  });
-
   sideNav.appendChild(sideNavList);
-  highlightCurrentLink(sideNavList, sections);
+  highlightCurrentLink(sideNavList, sections, block);
 
   return sideNav;
 }
-// Function to handle testimonials
-function handleTestimonials(testimonialBlock) {
-  // Select the <ul> element with the class 'testimonial-list'
-  const testimonialContainer = testimonialBlock.querySelector('div > div:nth-child(2) > ul');
-  if (testimonialContainer) {
-    const testimonials = testimonialContainer.querySelectorAll('li');
-    // Check if there are any testimonials
+
+function handleTestimonials(testimonialContainer) {
+  if (!testimonialContainer) return;
+  const testimonialList = testimonialContainer.querySelector(':scope ul');
+  if (testimonialList) {
+    const testimonials = testimonialList.querySelectorAll('li');
     if (testimonials.length === 0) {
-      return; // Exit if no testimonials
+      return;
     }
     let currentTestimonial = 0;
     const showTestimonial = function showTestimonial(index) {
@@ -108,38 +101,96 @@ function handleTestimonials(testimonialBlock) {
     };
 
     setInterval(rotateTestimonials, 5000);
-
-    // Move the parent div of the <ul> to the end of testimonialBlock
-    testimonialBlock.appendChild(testimonialContainer.parentElement);
   }
 }
 
-// Call the function with the correct block
-const testimonialBlock = document.querySelector('div');
-handleTestimonials(testimonialBlock);
-
-export default function decorate(block) {
-  const buttonLinks = block.querySelectorAll('.button-container a');
-  const contentSections = Array.from(block.querySelectorAll('.tabs-with-comments > div > div:nth-child(2)'));
-  // Hide all content sections initially except for the first one
-  contentSections.forEach((section, index) => {
-    section.style.display = index === 0 ? 'block' : 'none';
+function createDropdown(links, sections, block) {
+  const dropdown = document.createElement('select');
+  dropdown.className = 'dropdown-list';
+  links.forEach((link, index) => {
+    const option = document.createElement('option');
+    option.value = index; // Use index to track sections
+    option.textContent = link.textContent;
+    dropdown.appendChild(option);
   });
-  // Move the existing header to the top of the block
-  const header = document.querySelector('.tabs-with-comments > div:nth-child(1) h3');
-  if (header) {
-    block.insertBefore(header, block.firstChild);
-  }
-  // Create and populate dropdown for navigation
-  const dropdown = createDropdown(buttonLinks, contentSections);
-  block.insertBefore(dropdown, header ? header.nextSibling : block.firstChild);
-  // Create side navigation for desktop
-  const sideNav = createSideNavigation(buttonLinks, contentSections);
-  block.insertBefore(sideNav, dropdown);
-  // Handle testimonials
-  handleTestimonials(block);
-  // Add the arrow-down div at the end of the block
-  const arrowDown = document.createElement('div');
-  arrowDown.className = 'arrow-down';
-  block.appendChild(arrowDown);
+  dropdown.addEventListener('change', function handleChange() {
+    const selectedIndex = this.value;
+    handleTabSelection(links[selectedIndex], sections, block);
+  });
+
+  const dropdownWrapper = document.createElement('div');
+  dropdownWrapper.classList.add('dropdown-wrapper');
+  const caret = document.createElement('span');
+  caret.classList.add('caret');
+  dropdownWrapper.append(dropdown, caret);
+  return dropdownWrapper;
+}
+
+async function decorateTabsComments(tabsCommentsWrapper) {
+  const fragmentLoadPromises = [];
+  tabsCommentsWrapper.querySelectorAll(':scope > div ').forEach((tabComment) => {
+    if (tabComment.children.length < 5) return;
+    const [, useDescription, description, reference, listIcon] = tabComment.children;
+    if (useDescription.textContent === 'true') {
+      reference.remove();
+      useDescription.remove();
+    } else {
+      description.remove();
+      useDescription.remove();
+      const URL = reference.querySelector('a');
+      const fragmentBlock = buildBlock('fragment', { elems: [URL] });
+      const fragmentWrapper = document.createElement('div');
+      fragmentWrapper.appendChild(fragmentBlock);
+      tabComment.append(fragmentWrapper);
+      decorateBlock(fragmentBlock);
+      fragmentLoadPromises.push(loadBlock(fragmentBlock));
+    }
+    const icon = listIcon?.querySelector('span.icon img');
+    if (icon) tabComment.classList.add('icon-list', icon.getAttribute('data-icon-name'));
+    listIcon?.remove();
+  });
+  await Promise.all(fragmentLoadPromises);
+}
+
+export default async function decorate(block) {
+  const [headingContainer, testimonialContainer, ...tabsWithComments] = block.children;
+  headingContainer.classList.add('heading-container');
+  testimonialContainer.classList.add('testimonial-container');
+
+  const tabsCommentsWrapper = document.createElement('div');
+  tabsCommentsWrapper.classList.add('tabs-comments');
+  tabsCommentsWrapper.append(...tabsWithComments);
+  testimonialContainer.after(tabsCommentsWrapper);
+  const buttonLinks = tabsCommentsWrapper.querySelectorAll(':scope > div > div:first-child .button-container a');
+  await decorateTabsComments(tabsCommentsWrapper);
+
+  const blockFirstHalf = document.createElement('div');
+  blockFirstHalf.classList.add('first-half');
+
+  const header = headingContainer.querySelector('h3');
+  if (header) blockFirstHalf.append(headingContainer);
+  else headingContainer.remove();
+
+  const sideNav = createSideNavigation(buttonLinks, tabsWithComments, block);
+  const updatedLinks = sideNav.querySelectorAll(':scope a');
+  const dropdownWrapper = createDropdown(updatedLinks, tabsWithComments, block);
+  blockFirstHalf.append(dropdownWrapper, sideNav);
+
+  const testimonialList = testimonialContainer.querySelector('ul');
+  if (testimonialList) blockFirstHalf.append(testimonialContainer);
+  else testimonialContainer.remove();
+
+  block.prepend(blockFirstHalf);
+  handleTestimonials(testimonialContainer);
+  highlightCurrentLink(sideNav.querySelector('ul'), tabsWithComments, block);
+
+  const moveTestimonial = () => {
+    if (isDesktop()) {
+      blockFirstHalf.append(testimonialContainer);
+    } else {
+      tabsCommentsWrapper.after(testimonialContainer);
+    }
+  };
+  document.addEventListener('load', moveTestimonial, true);
+  window.addEventListener('resize', moveTestimonial);
 }

@@ -19,5 +19,11 @@
   },
   {
     "...": "../blocks/*/_*.json#/models"
+  },
+  {
+    "...": "./form-components/_*.json#/models"
+  },
+  {
+    "...": "../blocks/form/components/*/_*.json#/models"
   }
 ]

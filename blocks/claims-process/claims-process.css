@@ -40,8 +40,13 @@
   margin: 0;
 }
 
-.claims-process .claim-process-option > div > p {
+.claims-process .claim-process-option > div > p,
+.claims-process .claim-process-option > div li {
   font-size: 0.875rem;
+}
+
+.claims-process .claim-process-option > div ol {
+  padding-left: 1.25rem;
 }
 
 .claims-process .claim-process-option > div:last-child {

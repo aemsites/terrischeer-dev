@@ -20,3 +20,7 @@
 .block.button-stack > div:last-child a {
   border-radius: 0 0 0.37rem 0.37rem;
 }
+
+.block.button-stack > div:only-child a {
+  border-radius: 0.37rem;
+}

@@ -51,14 +51,6 @@
           "required": true
         },
         {
-          "component": "number",
-          "valueType": "number",
-          "name": "showMoreThreshold",
-          "label": "Max list items to show",
-          "value": "0",
-          "description": "Set to 0 to show all items"
-        },
-        {
           "component": "text",
           "valueType": "string",
           "name": "footnote",
@@ -81,6 +73,14 @@
           "valueType": "string",
           "name": "styledListContent",
           "label": "Content"
+        },
+        {
+          "component": "number",
+          "valueType": "number",
+          "name": "showMoreThreshold",
+          "label": "Max list items to show",
+          "value": "0",
+          "description": "Set to 0 to show all items"
         }
       ]
     }

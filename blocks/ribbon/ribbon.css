@@ -24,6 +24,7 @@
 
 main .ribbon a.button {
   width: auto;
+  text-wrap-mode: wrap;
   padding: 0.3rem 1.5rem;
 }
 

@@ -35,6 +35,10 @@
             {
               "name": "BV Reviews",
               "value": "bv_reviews"
+            },
+            {
+              "name": "BV Submission Form",
+              "value": "bv_submission_form"
             }
           ]
         },
@@ -60,7 +64,15 @@
               "name": "Combined Coverage",
               "value": "combinedcoverage"
             }
-          ]
+          ],
+          "condition": {
+            "!==": [
+              {
+                "var": "block_type"
+              },
+              "bv_submission_form"
+            ]
+          }
         },
         {
           "component": "text",

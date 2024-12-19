@@ -69,7 +69,7 @@ function createTabs(tabSections) {
  * @param main
  */
 function decorateSectionTabs(main) {
-  const sections = main.querySelectorAll('.section');
+  const sections = main.querySelectorAll(':scope > div.section');
   let tabSections = [];
   const createTabsGroup = () => {
     const newSection = document.createElement('div');
@@ -91,6 +91,8 @@ function decorateSectionTabs(main) {
         newSection.dataset.sidebarLink = sidebarLink;
         newSection.dataset.sidebarMobileView = sidebarMobileView;
         newSection.dataset.sidebarTabletView = sidebarTabletView;
+        const sidebar = section.querySelector('.sidebar');
+        newSection.append(sidebar);
       }
     });
     tabSections = [];
@@ -273,7 +275,13 @@ function addCategoryTags(tagsWrapper, categories) {
     const categoryTag = document.createElement('a');
     const categoryID = categories[i]['category-id'];
     const categoryText = categories[i]['category-title'];
-    categoryTag.href = `/${ARTICLE_BASE}/${categoryID}`;
+
+    if (categoryID === '') {
+      categoryTag.href = `/${ARTICLE_BASE}`;
+    } else {
+      categoryTag.href = `/${ARTICLE_BASE}/${categoryID}`;
+    }
+
     categoryTag.classList.add('news-tag');
     categoryTag.textContent = categoryText;
     tagsWrapper.append(categoryTag);
@@ -390,6 +398,32 @@ async function loadNotificationBanner(main) {
 }
 
 /**
+ * Decorate anchor to handle external and new tab links
+ */
+function decorateAnchors() {
+  const main = document.querySelector('body > main');
+  if (!main) return;
+  const anchors = Array.from(main.querySelectorAll('a'));
+  anchors.forEach((anchor) => {
+    const link = anchor.href;
+    if (!link) return;
+    try {
+      const isExternal = link.startsWith('http') && !link.includes(window.location.hostname);
+      const extensions = ['.pdf', '.doc', '.docx', '.csv', '.xlsx', '.xls', '.jpg', '.zip', '.pptx', '.png'];
+      const url = new URL(link, window.location.origin);
+      const { pathname } = url;
+      if (isExternal || extensions.some((ext) => pathname?.endsWith(ext))) {
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener nofollow');
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(`Invalid URL in anchor: ${link}`, error);
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -402,10 +436,10 @@ export function decorateMain(main) {
   decorateSections(main);
   addCategoryTagToArticle(main);
   decorateBlocks(main);
-  decorateSectionTabs(main);
   decorateSectionTableList(main);
   buildSectionBasedAutoBlocks(main);
   requestAnimationFrame(adjustSectionHeight);
+  decorateAnchors();
 }
 
 /**
@@ -453,6 +487,10 @@ function autolinkModals(element) {
   });
 }
 
+function hasBvFormsSubmissionBlock(main) {
+  return main.querySelector('.block.bv-submission-form');
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -465,8 +503,12 @@ async function loadLazy(doc) {
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
-  loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+
+  if (!hasBvFormsSubmissionBlock(main)) {
+    loadHeader(doc.querySelector('header'));
+    loadFooter(doc.querySelector('footer'));
+  }
+  decorateSectionTabs(main);
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
