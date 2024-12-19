@@ -1,5 +1,3 @@
-import { addGenericLinkClickListener } from '../../scripts/blocks-utils.js';
-
 const RICHTEXT_PRESET_OPTIONS = [
   'h1-black',
   'h2-black',
@@ -45,7 +43,6 @@ export default async function decorate(block) {
   if (block.classList.contains('cta-button')) {
     block.querySelectorAll('.button')?.forEach((button) => {
       button.classList.add('orange');
-      addGenericLinkClickListener(button);
     });
   }
 }

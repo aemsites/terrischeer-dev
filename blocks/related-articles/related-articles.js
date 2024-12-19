@@ -20,13 +20,14 @@ export default async function decorate(block) {
   }));
   articles.forEach((article, index) => {
     try {
+      const relativePath = getEDSLink(article.originalPath);
       const item = document.createElement('div');
       item.className = 'related-article';
       item.innerHTML = `
  
              <div>
                 <h3>
-                    <a href="${article.originalPath}" class="article-title">
+                    <a href="${relativePath}" class="article-title">
                                 <img src="${article?.data?.imageThumbnail}" alt="article thumbnail">
                     ${article.data.title}
                     </a>

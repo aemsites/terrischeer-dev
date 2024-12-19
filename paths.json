@@ -3,9 +3,11 @@
     "/content/terrischeer/:/", 
     "/content/dam/assets/:/assets/",
     "/content/terrischeer/metadata:/metadata.json",
+    "/content/terrischeer/headers:/.helix/headers.json",
     "/content/terrischeer/redirects:/redirects.json",
     "/content/terrischeer/placeholders:/placeholders.json",
-    "/content/terrischeer/category-mapping:/category-mapping.json"
+    "/content/terrischeer/category-mapping:/category-mapping.json",
+    "/content/terrischeer/configuration:/.helix/config.json"
   ],
     "includes": [
       "/content/terrischeer",

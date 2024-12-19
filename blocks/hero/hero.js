@@ -119,10 +119,10 @@ function decorateButtons(block, activeTab) {
 }
 
 function decorateBackgroundImage(block) {
-  const backgroundImageContainer = block.querySelector(':scope > div > div:has(picture)');
-  const backgroundPictures = backgroundImageContainer.querySelectorAll('picture');
-  if (!backgroundPictures || backgroundPictures.length === 0) return '';
-  backgroundPictures.forEach((picture, index) => {
+  const backgroundImageContainer = block.querySelector(':scope > div > div:has(picture)')
+    || block.querySelector(':scope > div > div'); // using first row as a fallback container
+  const backgroundPictures = backgroundImageContainer?.querySelectorAll('picture');
+  backgroundPictures?.forEach((picture, index) => {
     let pictureParent = picture.parentNode;
     if (pictureParent?.nodeName !== 'P') {
       pictureParent = document.createElement('p');
@@ -218,10 +218,35 @@ export default function decorate(block) {
     heroMenu.appendChild(ul);
   }
   content.append(heroMenu);
-  // remove all empty divs, as a result of decorating the markup
-  Array.from(block.querySelectorAll(':scope > div > div')).forEach(((div) => {
-    const pTag = div.querySelector('p');
-    if ((div.className === '' && div.innerHTML.trim() === '')
-      || (div.className === '' && pTag.className === '' && pTag.innerHTML.trim() === '')) div.parentNode.remove();
-  }));
+  Array.from(block.querySelectorAll(':scope > div > div')).forEach((div) => {
+    const parent = div.parentElement;
+
+    // Check if the div is completely empty (no meaningful content)
+    const hasMeaningfulContent = Array.from(div.childNodes).some((node) => {
+      // Check for non-whitespace text nodes
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        return true;
+      }
+      // Check for non-empty elements
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === 'P') {
+          return node.textContent.trim() || node.children.length > 0; // Non-empty <p>
+        }
+        return true; // Other elements are meaningful
+      }
+      return false;
+    });
+
+    if (!hasMeaningfulContent) {
+      // If no meaningful content, delete parent of div
+      parent.remove();
+    } else {
+      // Case 3: Remove empty <p> tags inside the div if it has other valid content
+      div.querySelectorAll('p').forEach((p) => {
+        if (!p.textContent.trim() && p.children.length === 0) {
+          p.remove();
+        }
+      });
+    }
+  });
 }

@@ -1,4 +1,4 @@
-import { decorateIcons, fetchPlaceholders } from '../../scripts/aem.js';
+import { decorateIcons, fetchPlaceholders, sampleRUM } from '../../scripts/aem.js';
 import { closeSearchBar } from '../../scripts/blocks-utils.js';
 import { buildArticleSearchResult } from '../../scripts/scripts.js';
 
@@ -212,6 +212,7 @@ async function renderResults(
     const noResultSearch = resultsContainer.querySelector('input');
     noResultSearch.focus();
     noResultSearch.value = searchParams.get('s');
+    sampleRUM('search:noresult', { source: '.no-results', target: searchTerms });
   }
   requestAnimationFrame(() => {
     resultsContainer.style.display = 'block';
@@ -277,6 +278,7 @@ function handleSearch(container, searchValue, config) {
     const errorSpan = container.querySelector('.search-error');
     errorSpan.innerText = errorMsg;
     errorSpan.style.display = 'block';
+    sampleRUM('search:error', { source: '.search-error', target: errorMsg });
     return;
   }
   window.location.href = searchUrlWithParam('s', searchValue);

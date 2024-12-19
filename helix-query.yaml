@@ -17,6 +17,10 @@ indices:
       - '/modals'
       - '/modals/**'
       - '/placeholders'
+      - '/configuration'
+      - '/category-mapping'
+      - '/headers'
+      - '/redirects'
       - '/content/**'
     target: /query-index.json
     properties:

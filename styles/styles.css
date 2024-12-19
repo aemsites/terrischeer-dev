@@ -56,8 +56,6 @@
   --light-grey: #d0d0d0;
   --dark-grayish-blue: #8c8e90;
   --taupe-gray: #888;
-  --lighter-gray: #fbfbfb;
-  --midlight-gray: #e8e8e8;
 
   /* global color usage */
   --link-color: var(--teal);
@@ -298,6 +296,7 @@ main button:focus {
 }
 
 /* orange button */
+main .form button[type='submit'],
 main a.button.orange,
 main button.orange,
 main a.button.primary,
@@ -308,6 +307,8 @@ main button.primary {
   background: linear-gradient(var(--orange-btn-light), var(--orange-btn));
 }
 
+main .form button[type='submit']:hover,
+main .form button[type='submit']:focus,
 main a.button.orange:any-link:hover,
 main a.button.orange:any-link:focus,
 main a.button.primary:any-link:hover,
@@ -627,6 +628,15 @@ main .tabs-group > .section.show {
   display: block;
 }
 
+main .tabs-group > .section > .default-content-wrapper {
+  margin-bottom: 0.625rem;
+}
+
+main .tabs-group > .section > .default-content-wrapper > p {
+  font-size: 0.875rem;
+  margin: unset;
+}
+
 main .tabs-group .tabs {
   display: flex;
   gap: 0.125rem;
@@ -678,9 +688,8 @@ main .tabs-group .tabs button.active {
   }
 }
 
-/* tab end */
+/* Tooltip */
 
-/* tooltip */
 main .tooltip {
   position: relative;
   display: inline-block;
@@ -698,24 +707,23 @@ main .tooltip:active {
 }
 
 main .tooltip-content {
-  visibility: hidden;
-  width: 11.25rem;
+  display: none;
+  position: absolute;
+  width: 11.25rem; /* 180 px */
+  color: var(--white);
   background-color: rgb(18 117 125 / 80%);
-  color: #fff;
   line-height: 1.5;
   text-align: center;
-  border-radius: 0 0.125rem 0.125rem;
+  border-radius: 0 0.3rem 0.3rem;
   padding: 0.9375rem;
-  position: absolute;
   z-index: 10;
   left: 100%;
   top: 50%;
-  transform: translateY(-5%);
-  opacity: 0;
-  transition: opacity 0.3s;
+  transform: translateY(-0.18rem);
   margin-left: 0.625rem;
   font-style: normal;
   text-wrap: auto;
+  backdrop-filter: blur(0.3125rem);
 }
 
 main .tooltip-content::after {
@@ -726,14 +734,42 @@ main .tooltip-content::after {
   border-width: 0 0.625rem 0.625rem 0;
   border-style: solid;
   border-color: transparent rgb(18 117 125 / 80%) transparent transparent;
+  backdrop-filter: blur(0.3125rem);
+}
+
+/* Tooltip - left popup */
+main .tooltip.tooltip-left .tooltip-content {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: 0.625rem;
+  border-radius: 0.3rem 0 0.3rem 0.3rem;
+}
+
+main .tooltip.tooltip-left .tooltip-content::after {
+  transform: rotate(270deg) translateY(11.25rem);
+  left: 1.875rem;
+}
+
+/* Tooltip - bottom popup */
+main .tooltip.tooltip-bottom .tooltip-content {
+  left: 50%;
+  border-radius: 0.3rem;
+  margin-top: 0.8rem;
+}
+
+main .tooltip.tooltip-bottom .tooltip-content::after {
+  display: none;
 }
 
 main .tooltip:hover .tooltip-content,
 main .tooltip:focus .tooltip-content {
+  display: block;
   visibility: visible;
-  opacity: 1;
   font-weight: var(--font-weight-normal);
 }
+
+/* Tags */
 
 main .tags-wrapper {
   display: flex;
@@ -762,6 +798,8 @@ main .tags-wrapper img {
   margin-bottom: auto;
 }
 
+/* Notification banner */
+
 .notification-banner-skeleton {
   min-height: 7.6rem;
   color: transparent;
@@ -789,5 +827,3 @@ header:has(.notification-banner-skeleton, .notification-banner-container) {
     min-height: calc(3.83rem + var(--nav-height-desktop));
   }
 }
-
-/* tooltip end */
